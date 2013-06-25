@@ -1,0 +1,14 @@
+# Mac OS X hidden files
+.DS_Store
+
+# Vim swap files
+.*.sw?
+
+# Pow and Powder config
+/.pow*
+
+# Bundler binstubs
+/bin/
+
+#test files
+test.*

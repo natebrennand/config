@@ -25,3 +25,10 @@
     changed = yellow
     untracked = cyan reverse
     branch = magenta
+
+[core]
+	excludesfile = ~/.gitignore
+
+[push]
+	default = simple
+
