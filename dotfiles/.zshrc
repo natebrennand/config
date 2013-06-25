@@ -5,26 +5,36 @@ plugins=(git brew lol pip sublime zsh-syntax-highlighting vi-mode web-search)
 ZSH_THEME="robbyrussell"
 
 export EDITOR=vim
-export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
-export PATH=$PATH:/usr/local/share/python
-export PATH=$PATH:~/.vim/
-export PATH=$PATH:~/.vimbundles/
+
+PATH=/bin
+PATH=/usr/sbin:$PATH
+PATH=/sbin:/opt/X11/bin:$PATH
+PATH=/usr/bin:$PATH
+PATH=/usr/local/bin:$PATH
+#PATH=/usr/local/share/python:$PATH
+PATH=~/.vim:$PATH
+PATH=~/.vimbundles:$PATH
+PATH=/usr/local/sbin:$PATH
+PATH=/Applications/Postgres.app/Contents/MacOS/bin:$PATH
+### Added by the Heroku Toolbelt
+PATH=/usr/local/heroku/bin:$PATH
+PATH=~/github/config/scripts:$PATH
+
+
+export PATH
 
 source $ZSH/oh-my-zsh.sh
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
 
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
 alias mou='open /Applications/Mou.app'
-alias clic='ssh nsb2142@clic-lab.cs.columbia.edu'
-alias cunix='ssh nsb2142@cunix.cc.columbia.edu'
 alias gtree='git log --oneline --graph --decorate --all'
 alias ll='ls -alF'
 alias l='ls -1h'
 alias less="/usr/share/vim/vim73/macros/less.sh"
+alias mtr="sudo mtr"
+alias gap="git add --patch"
+alias glog='git log --stat --oneline'
 
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
