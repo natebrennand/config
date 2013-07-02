@@ -11,7 +11,7 @@ PATH=/usr/sbin:$PATH
 PATH=/sbin:/opt/X11/bin:$PATH
 PATH=/usr/bin:$PATH
 PATH=/usr/local/bin:$PATH
-#PATH=/usr/local/share/python:$PATH
+PATH=/usr/local/share/python:$PATH
 PATH=~/.vim:$PATH
 PATH=~/.vimbundles:$PATH
 PATH=/usr/local/sbin:$PATH
@@ -19,7 +19,6 @@ PATH=/Applications/Postgres.app/Contents/MacOS/bin:$PATH
 ### Added by the Heroku Toolbelt
 PATH=/usr/local/heroku/bin:$PATH
 PATH=~/github/config/scripts:$PATH
-
 
 export PATH
 
@@ -35,6 +34,8 @@ alias less="/usr/share/vim/vim73/macros/less.sh"
 alias mtr="sudo mtr"
 alias gap="git add --patch"
 alias glog='git log --stat --oneline'
+alias nodemon='/usr/local/share/npm/lib/node_modules/nodemon/nodemon.js'
+alias glg='git lg'
 
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
@@ -53,5 +54,4 @@ export PYTHONSTARTUP="$HOME/.pythonrc"
 
 # Z
 . ~/dvlpmnt/Z/z.sh
-
 
