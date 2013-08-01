@@ -27,4 +27,7 @@ set showcmd     " Shows incomplete commands
 
 au BufRead,BufNewFile *.md set filetype=markdown    " markdown syntax for non-README files
 
+" use filetype specific vim settings
+" settings located in ~/.vim/after/ftplugins/
+filetype plugin on
 
