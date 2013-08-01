@@ -22,3 +22,10 @@ Clears the files from your system configuration folder and backs them up in a fo
 
 Copies back the files that are backed up on your desktop to the system configuration folder.
 
+
+##Random
+
+####fix\_history.sh
+
+Fixes the git history of a repo when you had the wrong git config. Needs configuration.
+
