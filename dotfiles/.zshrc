@@ -15,31 +15,35 @@ PATH=/usr/local/share/python:$PATH
 PATH=~/.vim:$PATH
 PATH=~/.vimbundles:$PATH
 PATH=/usr/local/sbin:$PATH
-PATH=/Applications/Postgres.app/Contents/MacOS/bin:$PATH
-### Added by the Heroku Toolbelt
-PATH=/usr/local/heroku/bin:$PATH
+#PATH=/Applications/Postgres.app/Contents/MacOS/bin:$PATH
+PATH=/usr/local/heroku/bin:$PATH        # Added by the Heroku Toolbelt
 PATH=~/github/config/scripts:$PATH
+PATH=/usr/local/share/npm/bin:$PATH    #add npm stuff
 
 export PATH
 
+#installing psycopg2
+#export DYLD_FALLBACK_LIBRARY_PATH=/Applications/Postgres.app/Contents/MacOS/lib:$DYLD_LIBRARY_PATH
+#alias psql="(. ~/.bash_profile; unset DYLD_FALLBACK_LIBRARY_PATH; psql)";
+
 source $ZSH/oh-my-zsh.sh
 
-# Example aliases
+# aliases
 alias zshconfig="vim ~/.zshrc"
 alias mou='open /Applications/Mou.app'
-alias gtree='git log --oneline --graph --decorate --all'
 alias ll='ls -alF'
 alias l='ls -1h'
-alias less="/usr/share/vim/vim73/macros/less.sh"
-alias mtr="sudo mtr"
+alias less="/usr/share/vim/vim73/macros/less.sh"    # coloring while using less
+alias mtr="sudo mtr"                # ping on steroids
+alias json='python -mjson.tool'     # pipe a json to this for pretty print
+
+# git aliases
+alias gtree='git log --oneline --graph --decorate --all'
 alias gap="git add --patch"
 alias glog='git log --stat --oneline'
-alias nodemon='/usr/local/share/npm/lib/node_modules/nodemon/nodemon.js'
 alias glg='git lg'
+alias gd='git diff --word-diff'
 
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 
 # RUBY ON RAILS
 #export PATH=$PATH:/usr/bin/ruby
