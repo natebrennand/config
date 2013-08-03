@@ -1,3 +1,4 @@
+
 # Setting up your Mac for Development
 
 These instructions work for OS X 10.8. You might need to google around for certain steps if you have an older version.
@@ -13,7 +14,7 @@ When Xcode has finished, go to Xcode Preferences
 
 * Hit install for "Command Line Tools"
 
-	* This installs various compilers that allow your computer to build software from source code.
+  * This installs various compilers that allow your computer to build software from source code.
 
 
 ### Sublime Text 2
@@ -25,9 +26,9 @@ It will prompt you to pay for a license often but never forces you to pay.
 
 * Then install package control for Sublime
 
-	* Install from http://wbond.net/sublime_packages/package_control
+  * Install from http://wbond.net/sublime_packages/package_control
 	
-	* To install packages, use Sublime's Command Pallete (shift-command-p)
+  * To install packages, use Sublime's Command Pallete (shift-command-p)
 
 Useful packages:
 
@@ -49,9 +50,9 @@ Homebrew is a package manager for OS X. It allows you to install various softwar
 
 * Install @ http://mxcl.github.io/homebrew/  
 
+Run this in the terminal
 
-		# run this in the terminal
-		ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+    ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
 
 
 ### git
@@ -61,8 +62,9 @@ If you're going to collaborate with anyone you'll likely be using this software.
 
 Use HomeBrew to install git.
 
-		# run this in the terminal
-		"brew install git"
+Run this in the terminal
+
+    brew install git
 
 * Allow the command line to use your keychain. You won't be prompted for a username and password while using git.
 
@@ -71,16 +73,16 @@ Use HomeBrew to install git.
 
 * Make an education account to get free private repos
 
-	* Sign up @ https://github.com/edu
+  * Sign up @ https://github.com/edu
 
 * update your gitconfig
 
-	* https://github.com/edu
+  * https://github.com/edu
 
 
 * OPTIONAL: Download and install the GitHub GUI.
 
-	* Install @ http://mac.github.com/
+  * Install @ http://mac.github.com/
 
 
 ### Oh-my-zshell
@@ -88,16 +90,20 @@ Use HomeBrew to install git.
 Zsh is an alternative to bash. It offers auto completion and easily configurable command prompts.
 [More infer ]https://github.com/robbyrussell/oh-my-zsh
 
-		# run this in the terminal	     
-	    curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+Run this in the terminal
 
+    curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
 
 Add a command prompt syntax highlighter.  
 This shows you if the command line utility you're trying to use is installed on your computer by highlighting it as green or red.
 
-		# run this in the terminal
-		git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-		# in your .zshrc, add zsh-syntax-highlighting to the plugins
+Ran this in the terminal
+
+    git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+
+In your .zshrc, add zsh-syntax-highlighting to the plugins
+
+    
 
 ## Extras
 
