@@ -31,3 +31,9 @@ au BufRead,BufNewFile *.md set filetype=markdown    " markdown syntax for non-RE
 " settings located in ~/.vim/after/ftplugins/
 filetype plugin on
 
+"key remappings 
+
+" don't use shift when save/quit/etc
+noremap ; :
+
+
