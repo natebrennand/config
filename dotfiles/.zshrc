@@ -11,7 +11,6 @@ PATH=/usr/sbin:$PATH
 PATH=/sbin:/opt/X11/bin:$PATH
 PATH=/usr/bin:$PATH
 PATH=/usr/local/bin:$PATH
-PATH=/usr/local/share/python:$PATH
 PATH=~/.vim:$PATH
 PATH=~/.vimbundles:$PATH
 PATH=/usr/local/sbin:$PATH
@@ -58,5 +57,5 @@ alias gd='git diff --word-diff'
 export PYTHONSTARTUP="$HOME/.pythonrc"
 
 # Z
-. ~/dvlpmnt/Z/z.sh
+. ~/cloned/z/z.sh
 
