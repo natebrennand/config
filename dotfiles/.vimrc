@@ -20,7 +20,8 @@ if $TERM =~ '256color'
 elseif $TERM =~ '^xterm$'
     set t_Co=256
 endif
-colorscheme molakai " colors!
+
+colorscheme molokai " colors!
 
 set incsearch
 set showcmd     " Shows incomplete commands
