@@ -1,0 +1,18 @@
+{
+	"auto_complete": true,
+	"auto_indent": true,
+	"color_scheme": "Packages/Base16 Color Schemes/base16-default.dark.tmTheme",
+	"detect_identation": true,
+	"ensure_newline_at_eof_on_save": true,
+	"font_size": 11.0,
+	"ignored_packages":
+	[
+	],
+	"indent_subsequent_lines": true,
+	"margin": 2,
+	"shift_tab_unindent": true,
+	"smart_indent": true,
+	"tab_completion": true,
+	"translate_tabs_to_spaces": true,
+	"use_tab_stops": true
+}
