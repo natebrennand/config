@@ -29,7 +29,7 @@ source $ZSH/oh-my-zsh.sh
 
 # aliases
 alias zshconfig="vim ~/.zshrc"
-alias mou='open /Applications/Mou.app'
+alias mou='open /opt/homebrew-cask/Caskroom/mou/latest/Mou.app'
 alias ll='ls -alF'
 alias l='ls -1h'
 alias less="/usr/share/vim/vim73/macros/less.sh"    # coloring while using less
