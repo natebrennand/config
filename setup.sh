@@ -25,7 +25,7 @@ do
     for f in $directory
     do
         mv "$HOME/$f" "$HOME/$save_dir/$f"
-        ln -s "$dir/.vim/$f" "$HOME/$f"
+        ln -s "$dir/$f" "$HOME/$f"
     done
 done
 
