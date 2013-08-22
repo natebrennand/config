@@ -21,6 +21,8 @@ set shiftwidth=4  "Assists code formatting
 " searching
 set hlsearch    " highlight search matches
 set incsearch   " searches as you type
+set ignorecase  " case insensitive searching
+set smartcase   " searches w/ case if there's a capital letter
 
 " indenting
 set autoindent  "If you're indented, new lines will also be indented
