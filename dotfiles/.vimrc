@@ -35,7 +35,13 @@ if $TERM =~ '256color'
 elseif $TERM =~ '^xterm$'
     set t_Co=256
 endif
-colorscheme molokai " colors!
+
+" color choices
+" colorscheme molokai
+" colorscheme ir_black
+colorscheme jellybeans
+let g:jellbeans_use_color_black = 0
+
 au BufRead,BufNewFile *.md set filetype=markdown    " markdown syntax for non-README files
 
 " use filetype specific vim settings
