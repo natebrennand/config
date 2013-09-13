@@ -12,7 +12,7 @@ mkdir -p "$HOME/$save_dir"
 dir=`pwd`
 
 # making vim relevant directories
-for d in ".vim" ".vim/colors" ".vim/after/ftplugins"
+for d in ".vim" ".vim/colors" ".vim/after/ftplugin"
 do
     mkdir -p $HOME/$d
     mkdir -p $HOME/$save_dir/$d

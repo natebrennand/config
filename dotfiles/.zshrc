@@ -19,6 +19,11 @@ PATH=/usr/local/heroku/bin:$PATH        # Added by the Heroku Toolbelt
 PATH=~/github/config/scripts:$PATH
 PATH=/usr/local/share/npm/bin:$PATH    #add npm stuff
 
+# font builder links
+FDK_EXE="/Users/nate/bin/FDK/Tools/osx"
+PATH=${PATH}:"/Users/nate/bin/FDK/Tools/osx"
+export FDK_EXE
+
 export PATH
 
 #installing psycopg2
