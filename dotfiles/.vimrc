@@ -1,4 +1,5 @@
 
+" random
 set nocompatible    "This fixes the problem where arrow keys do not function properly on some systems.
 set backspace=2     "This makes the backspace key function like it does in other programs.
 set foldmethod=manual  "Lets you hide sections of code
@@ -42,19 +43,20 @@ endif
 colorscheme jellybeans
 let g:jellbeans_use_color_black = 0
 
+" markdown syntax
 au BufRead,BufNewFile *.md set filetype=markdown    " markdown syntax for non-README files
+" golang syntax
+au BufRead,BufNewFile *.go set filetype=go          " golang syntax
 
 " use filetype specific vim settings
-" settings located in ~/.vim/after/ftplugins/
-filetype plugin on
+" settings located in ~/.vim/after/ftplugin/
+filetype indent plugin on
 
 "key remappings 
-
-" commands
-" don't use shift when save/quit/etc ; --> : (in command mode)
+" commands: don't use shift when save/quit/etc ; --> : (in command mode)
 noremap ; :
-
-" windows
-" rmap s to ctrl-W
+" windows: rmap s to ctrl-W
 noremap s <C-W>
-
+" navigation: move by displayed lines, not real lines
+noremap j gj
+noremap k gk
