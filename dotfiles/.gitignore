@@ -12,3 +12,7 @@
 
 #test files
 test.*
+
+# python
+.Python
+*.pyc
