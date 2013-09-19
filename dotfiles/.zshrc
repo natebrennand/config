@@ -17,7 +17,9 @@ PATH=/usr/local/sbin:$PATH
 #PATH=/Applications/Postgres.app/Contents/MacOS/bin:$PATH
 PATH=/usr/local/heroku/bin:$PATH        # Added by the Heroku Toolbelt
 PATH=~/github/config/scripts:$PATH
-PATH=/usr/local/share/npm/bin:$PATH    #add npm stuff
+PATH=/usr/local/share/npm/bin:$PATH     # Add npm stuff
+PATH=/usr/local/opt/ruby/bin:$PATH      # Add gems
+
 
 # font builder links
 FDK_EXE="/Users/nate/bin/FDK/Tools/osx"

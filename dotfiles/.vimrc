@@ -27,7 +27,7 @@ set smartcase   " searches w/ case if there's a capital letter
 
 " indenting
 set autoindent  "If you're indented, new lines will also be indented
-set smartindent  "Automatically indents lines after opening a bracket in programming languages
+" set smartindent  "Automatically indents lines after opening a bracket in programming languages
 
 " colors
 syntax on           "Enables syntax highlighting for programming languages
@@ -47,10 +47,20 @@ let g:jellbeans_use_color_black = 0
 au BufRead,BufNewFile *.md set filetype=markdown    " markdown syntax for non-README files
 " golang syntax
 au BufRead,BufNewFile *.go set filetype=go          " golang syntax
+" coffee syntax
+au BufRead,BufNewFile *.coffee set filetype=coffee          " coffee syntax
 
 " use filetype specific vim settings
 " settings located in ~/.vim/after/ftplugin/
 filetype indent plugin on
+
+" show cursor position
+set cursorline
+
+" window stuff
+set winwidth=80  " default to a width of 80 columns
+no equalalways
+
 
 "key remappings 
 " commands: don't use shift when save/quit/etc ; --> : (in command mode)
@@ -60,3 +70,4 @@ noremap s <C-W>
 " navigation: move by displayed lines, not real lines
 noremap j gj
 noremap k gk
+
