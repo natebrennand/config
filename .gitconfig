@@ -1,0 +1,37 @@
+[user]
+	name = Nate Brennand
+	email = natebrennand@gmail.com
+
+[credential]
+	helper = osxkeychain
+
+[color]
+	ui = auto
+
+[color "branch"]
+    current = yellow black
+    local = yellow
+    remote = magenta
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red reverse
+    new = green reverse
+    whitespace = white reverse
+
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = cyan reverse
+    branch = magenta
+
+[core]
+	excludesfile = ~/.global_gitignore
+
+
+[push]
+	default = simple
+
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
