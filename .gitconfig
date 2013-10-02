@@ -1,12 +1,12 @@
 [user]
-	name = Nate Brennand
-	email = natebrennand@gmail.com
+    name = Nate Brennand
+    email = natebrennand@gmail.com
 
 [credential]
-	helper = osxkeychain
+    helper = osxkeychain
 
 [color]
-	ui = auto
+    ui = auto
 
 [color "branch"]
     current = yellow black
@@ -27,11 +27,11 @@
     branch = magenta
 
 [core]
-	excludesfile = ~/.global_gitignore
-
+    excludesfile = ~/.global_gitignore
+    page = less
 
 [push]
-	default = simple
+    default = simple
 
 [alias]
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
