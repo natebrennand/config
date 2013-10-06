@@ -50,11 +50,13 @@ colorscheme jellybeans
 let g:jellbeans_use_color_black = 0
 
 " markdown syntax
-au BufRead,BufNewFile *.md set filetype=markdown    " markdown syntax for non-README files
+au BufRead,BufNewFile *.md set filetype=markdown
 " golang syntax
-au BufRead,BufNewFile *.go set filetype=go          " golang syntax
+au BufRead,BufNewFile *.go set filetype=go
 " coffee syntax
-au BufRead,BufNewFile *.coffee set filetype=coffee          " coffee syntax
+au BufRead,BufNewFile *.coffee set filetype=coffee
+" less syntax
+au BufRead,BufNewFile *.less set filetype=less
 
 " use filetype specific vim settings
 " settings located in ~/.vim/after/ftplugin/
