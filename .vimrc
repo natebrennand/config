@@ -46,8 +46,9 @@ endif
 " color choices
 " colorscheme molokai
 " colorscheme ir_black
-colorscheme jellybeans
-let g:jellbeans_use_color_black = 0
+colorscheme jellybeans              " jellybean colors!
+let g:jellbeans_use_color_black = 0 " use the right black
+set synmaxcol=200                   " stop highlighting after 200 characters
 
 " markdown syntax
 au BufRead,BufNewFile *.md set filetype=markdown
