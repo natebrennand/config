@@ -22,11 +22,10 @@ PATH=/usr/local/share/npm/bin:$PATH     # Add npm stuff
 PATH=/usr/local/opt/ruby/bin:$PATH      # Add gems
 
 
-# font builder links
+# font builder path links
 # FDK_EXE="/Users/nate/bin/FDK/Tools/osx"
 # PATH=${PATH}:"/Users/nate/bin/FDK/Tools/osx"
 # export FDK_EXE
-
 export PATH
 
 #installing psycopg2
@@ -36,29 +35,9 @@ export PATH
 source $ZSH/oh-my-zsh.sh
 
 # aliases
-alias zshconfig="vim ~/.zshrc"
-alias mou='open /opt/homebrew-cask/Caskroom/mou/latest/Mou.app'
-alias ll='ls -alF'
-alias l='ls -1h'
-alias less="/usr/share/vim/vim73/macros/less.sh"    # coloring while using less
-alias mtr="sudo mtr"                # ping on steroids
-alias json='python -mjson.tool'     # pipe a json to this for pretty print
-alias server='python -m SimpleHTTPServer'
-alias pipes='/usr/local/Cellar/bash/4.2.45/bin/bash /Users/nate/cloned/pipes/pipes.sh'  # screensaver
+source login_ssh.sh
+source my_aliases.sh
 
-# git aliases
-alias gtree='git log --oneline --graph --decorate --all'
-alias gap="git add --patch"
-alias glog='git log --stat --oneline'
-alias glg='git lg'
-alias gd='git diff --word-diff'
-
-# ssh aliases
-alias cunix='ssh nsb2142@cunix.cc.columbia.edu'
-
-# digital ocean boxes
-alias remindr='ssh root@192.241.251.177'
-alias looksee='ssh root@162.243.6.199'
 
 # RUBY ON RAILS
 #export PATH=$PATH:/usr/bin/ruby
