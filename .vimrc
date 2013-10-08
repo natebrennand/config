@@ -80,3 +80,9 @@ noremap s <C-W>
 noremap j gj
 noremap k gk
 
+" clipboard stuff
+
+" vmap <C-x> :!pbcopy<CR>         " cut
+vmap <C-C> :w !pbcopy<CR><CR>   " copy
+
+
