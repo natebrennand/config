@@ -7,7 +7,5 @@ Also a guide for setting up an OS X computer properly to point people towards so
 
 ##setup
 
-If you'd like to try the config just run `setup.sh`.
-
-If you don't like it, run the `rewind.sh`.
+The `setup.sh` cript is out of date, don't use it.
 
