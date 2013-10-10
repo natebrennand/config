@@ -9,6 +9,7 @@ alias mtr="sudo mtr"                # ping on steroids
 alias json='python -m json.tool'     # pipe a json to this for pretty print
 alias server='python -m SimpleHTTPServer'
 alias pipes='/usr/local/Cellar/bash/4.2.45/bin/bash /Users/nate/cloned/pipes/pipes.sh'  # screensaver
+alias latex='/usr/texbin/pdflatex'
 
 # git aliases
 alias gtree='git log --oneline --graph --decorate --all'
