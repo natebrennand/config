@@ -41,12 +41,11 @@
 		"include"
 	],
 	"font_face": "Source Code Pro Light",
-	"font_size": 12.0,
+	"font_size": 11.0,
 	"highlight_line": true,
 	"ignored_packages":
 	[
 		"sublimelint",
-		"SublimeLinter",
 		"AngularJS"
 	],
 	"indent_subsequent_lines": true,
