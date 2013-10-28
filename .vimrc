@@ -59,6 +59,16 @@ au BufRead,BufNewFile *.coffee set filetype=coffee
 " less syntax
 au BufRead,BufNewFile *.less set filetype=less
 
+" Vundle setup
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Bundles
+Bundle 'gmarik/vundle'
+Bundle 'scrooloose/nerdtree'
+
+
 " use filetype specific vim settings
 " settings located in ~/.vim/after/ftplugin/
 filetype indent plugin on
@@ -67,7 +77,7 @@ filetype indent plugin on
 set cursorline
 
 " window stuff
-set winwidth=80  " default to a width of 80 columns
+set winwidth=80     " default to a width of 80 columns
 no equalalways
 
 
