@@ -4,6 +4,8 @@ ZSH=$HOME/.oh-my-zsh
 plugins=(git brew lol pip sublime zsh-syntax-highlighting vi-mode web-search)
 ZSH_THEME="robbyrussell"
 
+# upgraded vim
+alias vim='/usr/local/Cellar/vim/7.4.052/bin/vim'
 export EDITOR=vim
 
 PATH=/bin
