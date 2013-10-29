@@ -68,21 +68,19 @@ Bundle 'gmarik/vundle'
 
 " Bundles
 Bundle 'airblade/vim-gitgutter'
+Bundle 'scrooloose/syntastic'
+Bundle 'mutewinter/nginx.vim'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'tpope/vim-fugitive'
+Bundle 'vim-coffee-script'
+Bundle 'vim-less'
+Bundle 'vim-indent-guides'
 
 " Airline
 Bundle 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
-
-" Syntastic
-Bundle 'scrooloose/syntastic'
-
-" nginx
-Bundle 'mutewinter/nginx.vim'
-
-" Code completion
-Bundle 'Valloric/YouCompleteMe'
 
 " Nerd Tree
 Bundle 'scrooloose/nerdtree'
@@ -94,10 +92,6 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-
-" Fugitive
-Bundle 'tpope/vim-fugitive'
-
 
 " use filetype specific vim settings
 " settings located in ~/.vim/after/ftplugin/
