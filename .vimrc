@@ -46,6 +46,7 @@ endif
 " color choices
 " colorscheme molokai
 " colorscheme ir_black
+set background=dark
 colorscheme jellybeans              " jellybean colors!
 let g:jellbeans_use_color_black = 0 " use the right black
 set synmaxcol=200                   " stop highlighting after 200 characters
@@ -63,10 +64,39 @@ au BufRead,BufNewFile *.less set filetype=less
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+Bundle 'gmarik/vundle'
 
 " Bundles
-Bundle 'gmarik/vundle'
+Bundle 'airblade/vim-gitgutter'
+
+" Airline
+Bundle 'bling/vim-airline'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+set laststatus=2
+
+" Syntastic
+Bundle 'scrooloose/syntastic'
+
+" nginx
+Bundle 'mutewinter/nginx.vim'
+
+" Code completion
+Bundle 'Valloric/YouCompleteMe'
+
+" Nerd Tree
 Bundle 'scrooloose/nerdtree'
+map <C-n> :NERDTreeToggle<CR>
+
+" Ctrl - P
+Bundle 'kien/ctrlp.vim'
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+
+" Fugitive
+Bundle 'tpope/vim-fugitive'
 
 
 " use filetype specific vim settings
