@@ -74,13 +74,15 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-coffee-script'
 Bundle 'vim-less'
-Bundle 'vim-indent-guides'
 
 " Airline
 Bundle 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
+
+" indent guides
+Bundle 'vim-indent-guides'
 
 " Nerd Tree
 Bundle 'scrooloose/nerdtree'
@@ -115,8 +117,9 @@ noremap j gj
 noremap k gk
 
 " clipboard stuff
-
-" vmap <C-x> :!pbcopy<CR>         " cut
-vmap <C-C> :w !pbcopy<CR><CR>   " copy
+" cutting
+" vmap <C-x> :!pbcopy<CR>
+" copying
+vmap <C-C> :w !pbcopy<CR><CR>
 
 
