@@ -7,7 +7,6 @@
 	"ensure_newline_at_eof_on_save": true,
 	"file_exclude_patterns":
 	[
-		"__init__.py",
 		".Python",
 		"*.pyc",
 		"*.pyo",
@@ -27,7 +26,8 @@
 		".DS_Store",
 		"*.class",
 		"*.psd",
-		"*.db"
+		"*.db",
+		"*.gz"
 	],
 	"folder_exclude_patterns":
 	[
