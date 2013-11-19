@@ -1,4 +1,40 @@
 
+" Vundle setup
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+
+" Bundles
+Bundle 'airblade/vim-gitgutter'
+Bundle 'scrooloose/syntastic'
+Bundle 'mutewinter/nginx.vim'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'tpope/vim-fugitive'
+Bundle 'vim-coffee-script'
+Bundle 'vim-less'
+Bundle 'flazz/vim-colorschemes'
+
+" Airline
+Bundle 'bling/vim-airline'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+set laststatus=2
+
+" indent guides
+Bundle 'vim-indent-guides'
+
+" Nerd Tree
+Bundle 'scrooloose/nerdtree'
+map <C-n> :NERDTreeToggle<CR>
+
+" Ctrl - P
+Bundle 'kien/ctrlp.vim'
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+
 " random
 set nocompatible    "This fixes the problem where arrow keys do not function properly on some systems.
 set backspace=2     "This makes the backspace key function like it does in other programs.
@@ -44,12 +80,10 @@ elseif $TERM =~ '^xterm$'
 endif
 
 " color choices
-" colorscheme molokai
-" colorscheme ir_black
-set background=dark
-colorscheme jellybeans              " jellybean colors!
-let g:jellbeans_use_color_black = 0 " use the right black
+" colorscheme zephyr
+colorscheme jelleybeans
 set synmaxcol=200                   " stop highlighting after 200 characters
+
 
 " markdown syntax
 au BufRead,BufNewFile *.md set filetype=markdown
@@ -60,40 +94,6 @@ au BufRead,BufNewFile *.coffee set filetype=coffee
 " less syntax
 au BufRead,BufNewFile *.less set filetype=less
 
-" Vundle setup
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
-
-" Bundles
-Bundle 'airblade/vim-gitgutter'
-Bundle 'scrooloose/syntastic'
-Bundle 'mutewinter/nginx.vim'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'tpope/vim-fugitive'
-Bundle 'vim-coffee-script'
-Bundle 'vim-less'
-
-" Airline
-Bundle 'bling/vim-airline'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-set laststatus=2
-
-" indent guides
-Bundle 'vim-indent-guides'
-
-" Nerd Tree
-Bundle 'scrooloose/nerdtree'
-map <C-n> :NERDTreeToggle<CR>
-
-" Ctrl - P
-Bundle 'kien/ctrlp.vim'
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 
 " use filetype specific vim settings
 " settings located in ~/.vim/after/ftplugin/
@@ -105,7 +105,6 @@ set cursorline
 " window stuff
 set winwidth=80     " default to a width of 80 columns
 no equalalways
-
 
 "key remappings 
 " commands: don't use shift when save/quit/etc ; --> : (in command mode)
@@ -121,5 +120,4 @@ noremap k gk
 " vmap <C-x> :!pbcopy<CR>
 " copying
 vmap <C-C> :w !pbcopy<CR><CR>
-
 
