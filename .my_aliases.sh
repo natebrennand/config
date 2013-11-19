@@ -12,6 +12,7 @@ alias pipes='/usr/local/Cellar/bash/4.2.45/bin/bash /Users/nate/cloned/pipes/pip
 alias latex='/usr/texbin/pdflatex'
 alias ansiweather='/Users/nate/cloned/ansiweather/ansiweather'
 alias vi='vim'
+alias nosetests='nosetests -v'
 
 # git aliases
 alias gtree='git log --oneline --graph --decorate --all'
