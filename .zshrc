@@ -37,8 +37,8 @@ export PATH
 source $ZSH/oh-my-zsh.sh
 
 # aliases
-source /Users/nate/login_ssh.sh
-source /Users/nate/my_aliases.sh
+source /Users/nate/.login_ssh.sh
+source /Users/nate/.my_aliases.sh
 
 
 # RUBY ON RAILS
