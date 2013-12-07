@@ -8,6 +8,7 @@
 	"file_exclude_patterns":
 	[
 		".Python",
+		".vagrant",
 		"*.pyc",
 		"*.pyo",
 		"*.exe",
