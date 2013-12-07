@@ -12,4 +12,5 @@ syn clear texOnlyMath
 " " still mark '^' as an error outside of math mode 
 syn match texOnlyMath /[\^]/ 
 
+set synmaxcol=1000                   " stop highlighting after 1000 characters
 
