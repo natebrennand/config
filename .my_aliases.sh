@@ -20,4 +20,5 @@ alias gap="git add --patch"
 alias glog='git log --stat --oneline'
 alias glg='git lg'
 alias gd='git diff --word-diff'
+alias gl='git pull --rebase'
 
