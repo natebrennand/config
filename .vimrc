@@ -17,6 +17,8 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'vim-coffee-script'
 Bundle 'vim-less'
 Bundle 'flazz/vim-colorschemes'
+Bundle 'jnwhiteh/vim-golang'
+Bundle 'Blackrush/vim-gocode'
 
 " Airline
 Bundle 'bling/vim-airline'
@@ -36,7 +38,7 @@ Bundle 'kien/ctrlp.vim'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log,*.db,*.aux,*.pdf     " MacOSX/Linux
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log,*.db,*.aux,*.pdf,*.pyc,*.min.js     " MacOSX/Linux
 
 " random
 set nocompatible    "This fixes the problem where arrow keys do not function properly on some systems.

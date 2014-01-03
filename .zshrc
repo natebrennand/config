@@ -8,6 +8,11 @@ ZSH_THEME="robbyrussell"
 alias vim='/usr/local/Cellar/vim/7.4.052/bin/vim'
 export EDITOR=vim
 
+# Go path
+GOPATH=$GOPATH:~/go_projects
+export GOPATH
+
+# PATH Variable
 PATH=/bin
 PATH=/usr/sbin:$PATH
 PATH=/sbin:/opt/X11/bin:$PATH
@@ -22,12 +27,12 @@ PATH=/usr/local/heroku/bin:$PATH        # Added by the Heroku Toolbelt
 PATH=~/github/config/scripts:$PATH
 PATH=/usr/local/share/npm/bin:$PATH     # Add npm stuff
 PATH=/usr/local/opt/ruby/bin:$PATH      # Add gems
-
-
-# font builder path links
-# FDK_EXE="/Users/nate/bin/FDK/Tools/osx"
-# PATH=${PATH}:"/Users/nate/bin/FDK/Tools/osx"
+PATH=/usr/local/Cellar/go/bin:$PATH      # Add go
+PATH=$GOPATH/bin:$PATH      # Add go
+PATH=$GOPATH:$PATH      # Add go
+# FDK_EXE="/Users/nate/bin/FDK/Tools/osx" # font builder path links
 # export FDK_EXE
+# PATH=${PATH}:"/Users/nate/bin/FDK/Tools/osx"
 export PATH
 
 #installing psycopg2
