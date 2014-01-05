@@ -38,7 +38,7 @@ Bundle 'kien/ctrlp.vim'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log,*.db,*.aux,*.pdf,*.pyc,*.min.js     " MacOSX/Linux
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log,*.db,*.aux,*.pdf,*.pyc,*.min.js,*/jsmin/*     " MacOSX/Linux
 
 " random
 set nocompatible    "This fixes the problem where arrow keys do not function properly on some systems.

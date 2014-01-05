@@ -42,7 +42,7 @@
 		"include"
 	],
 	"font_face": "Source Code Pro Light",
-	"font_size": 11.0,
+	"font_size": 10.0,
 	"highlight_line": true,
 	"ignored_packages":
 	[
