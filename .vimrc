@@ -10,7 +10,6 @@ Bundle 'gmarik/vundle'
 
 " Bundles
 Bundle 'airblade/vim-gitgutter'
-Bundle 'scrooloose/syntastic'
 Bundle 'mutewinter/nginx.vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'tpope/vim-fugitive'
@@ -32,6 +31,10 @@ Bundle 'vim-indent-guides'
 " Nerd Tree
 Bundle 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
+
+" Syntastic
+Bundle 'scrooloose/syntastic'
+let g:syntastic_javascript_checkers = ['jshint']
 
 " Ctrl - P
 Bundle 'kien/ctrlp.vim'
