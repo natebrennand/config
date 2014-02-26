@@ -34,6 +34,7 @@ map <C-n> :NERDTreeToggle<CR>
 
 " Syntastic
 Bundle 'scrooloose/syntastic'
+let g:syntastic_python_checkers=['pyflakes']
 let g:syntastic_javascript_checkers = ['jshint']
 
 " Ctrl - P
