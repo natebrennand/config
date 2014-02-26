@@ -60,3 +60,5 @@ export PYTHONSTARTUP="$HOME/.pythonrc"
 # Z
 . ~/cloned/z/z.sh
 
+# MOTD
+cat /etc/motd

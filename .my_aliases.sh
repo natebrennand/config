@@ -22,3 +22,6 @@ alias glg='git lg'
 alias gd='git diff --word-diff'
 alias gl='git pull --rebase'
 
+# motd aliases
+alias etodo='sudo vim /etc/motd'
+
