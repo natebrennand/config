@@ -130,3 +130,6 @@ noremap k gk
 " copying
 vmap <C-C> :w !pbcopy<CR><CR>
 
+" spell check
+:map <F5> :setlocal spell! spelllang=en_us<CR>
+
