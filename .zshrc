@@ -33,6 +33,7 @@ PATH=$GOPATH:$PATH      # Add go
 # FDK_EXE="/Users/nate/bin/FDK/Tools/osx" # font builder path links
 # export FDK_EXE
 # PATH=${PATH}:"/Users/nate/bin/FDK/Tools/osx"
+PATH=/usr/texbin:$PATH      # Add tex
 export PATH
 
 #installing psycopg2

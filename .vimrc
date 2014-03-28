@@ -19,6 +19,14 @@ Bundle 'flazz/vim-colorschemes'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'Blackrush/vim-gocode'
 
+
+" Pymode
+Bundle 'klen/python-mode'
+let g:pymode_trim_whitespaces = 1
+let g:pymode_python = 'python'
+let g:pymode_lint = 1
+let g:pymode_syntax = 1
+
 " Airline
 Bundle 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
@@ -42,7 +50,7 @@ Bundle 'kien/ctrlp.vim'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log,*.db,*.aux,*.pdf,*.pyc,*.min.js,*/jsmin/*     " MacOSX/Linux
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log,*.db,*.aux,*.pdf,*.pyc,*.min.js,*/jsmin/*,*.fls,*.fdb_latexmk     " MacOSX/Linux
 
 " random
 set nocompatible    "This fixes the problem where arrow keys do not function properly on some systems.

@@ -1,0 +1,42 @@
+
+\documentclass[11pt]{article}
+
+\usepackage{alltt,fullpage,epsfig,amsmath,amssymb}
+
+\usepackage{listings}
+\lstset{
+  breaklines=true,
+  keepspaces=true,
+  numbers=left
+}
+
+\newcommand{\auth}{AUTHOR(S)}
+\newcommand{\class}{CLASS}
+
+
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{
+  \fancyhf{}% Clear header/footer
+  \fancyhead[L]{\auth}
+  \fancyhead[R]{\class}
+}
+\pagestyle{plain}% Set page style to plain.
+
+\author{\auth}
+\title{\class}
+
+
+\begin{document}
+\setlength{\parskip}{.1 in}
+
+\maketitle
+\newpage
+
+
+\section*{}
+
+% citations
+\include{bib/main}
+
+\end{document}
+
