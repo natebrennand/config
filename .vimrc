@@ -42,8 +42,15 @@ map <C-n> :NERDTreeToggle<CR>
 
 " Syntastic
 Bundle 'scrooloose/syntastic'
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_signs=1
+
 let g:syntastic_python_checkers=['pyflakes']
 let g:syntastic_javascript_checkers = ['jshint']
+
+let g:syntastic_c_check_header = 1
+let g:syntastic_c_checkers = ['ctags','gcc', 'clang']
+
 
 " Ctrl - P
 Bundle 'kien/ctrlp.vim'
