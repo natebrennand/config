@@ -25,3 +25,9 @@ alias gl='git pull --rebase'
 # motd aliases
 alias etodo='sudo vim /etc/motd'
 
+# tarring
+alias untar='tar -zxvf'
+
+# choo choo
+alias sl='\sl'
+
