@@ -88,7 +88,7 @@ set foldlevel=1
 " searching
 set hlsearch    " highlight search matches
 set incsearch   " searches as you type
-set ignorecase  " case insensitive searching
+" set ignorecase  " case insensitive searching
 set smartcase   " searches w/ case if there's a capital letter
 
 " indenting
