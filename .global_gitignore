@@ -16,3 +16,4 @@ test.*
 # python
 .Python
 *.pyc
+.ropeproject
