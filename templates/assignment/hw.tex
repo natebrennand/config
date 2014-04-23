@@ -9,6 +9,10 @@
 
 \newcommand{\assignment}{CLASS \& ASSIGNMENT}
 \newcommand{\me}{Nate Brennand - nsb2142}
+\newcommand{\problemSection}[1]{
+  \section*{Question \##1}
+  \input{problem#1/problem} \newpage
+}
 
 \usepackage{fancyhdr}
 \fancypagestyle{plain}{
@@ -28,16 +32,9 @@
 \maketitle
 \newpage
 
-\section*{Question \#1}
-\input{problem1/problem} \newpage
-
-\section*{Question \#2}
-\input{problem2/problem} \newpage
-
-\section*{Question \#3}
-\input{problem3/problem} \newpage
-
-\section*{Question \#4}
-\input{problem4/problem} \newpage
+\problemSection{1}
+\problemSection{2}
+\problemSection{3}
+\problemSection{4}
 
 \end{document}
