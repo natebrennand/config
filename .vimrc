@@ -19,14 +19,6 @@ Bundle 'flazz/vim-colorschemes'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'Blackrush/vim-gocode'
 
-
-" Pymode
-Bundle 'klen/python-mode'
-let g:pymode_trim_whitespaces = 1
-let g:pymode_python = 'python'
-let g:pymode_lint = 1
-let g:pymode_syntax = 1
-
 " Airline
 Bundle 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
