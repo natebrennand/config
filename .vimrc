@@ -19,6 +19,13 @@ Bundle 'flazz/vim-colorschemes'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'Blackrush/vim-gocode'
 
+" rainbow parens
+Bundle 'kien/rainbow_parentheses.vim'
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
 " Airline
 Bundle 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
@@ -96,7 +103,7 @@ endif
 
 " color choices
 " colorscheme zephyr
-colorscheme jelleybeans
+colorscheme jellybeans
 set synmaxcol=200                   " stop highlighting after 200 characters
 
 
