@@ -9,7 +9,7 @@ alias vim='/usr/local/Cellar/vim/7.4.052/bin/vim'
 export EDITOR=vim
 
 # Go path
-GOPATH=$GOPATH:~/go_projects
+GOPATH=~/go_projects
 export GOPATH
 
 # PATH Variable
@@ -28,8 +28,9 @@ PATH=~/github/config/scripts:$PATH
 PATH=/usr/local/share/npm/bin:$PATH     # Add npm stuff
 PATH=/usr/local/opt/ruby/bin:$PATH      # Add gems
 PATH=/usr/local/Cellar/go/bin:$PATH      # Add go
-PATH=$GOPATH/bin:$PATH      # Add go
 PATH=$GOPATH:$PATH      # Add go
+PATH=$GOPATH/bin:$PATH      # Add go executables
+PATH=~/scripts:$PATH      # Add random scripts
 # FDK_EXE="/Users/nate/bin/FDK/Tools/osx" # font builder path links
 # export FDK_EXE
 # PATH=${PATH}:"/Users/nate/bin/FDK/Tools/osx"
@@ -45,7 +46,6 @@ source $ZSH/oh-my-zsh.sh
 # aliases
 source /Users/nate/.login_ssh.sh
 source /Users/nate/.my_aliases.sh
-
 
 # RUBY ON RAILS
 #export PATH=$PATH:/usr/bin/ruby

@@ -28,7 +28,7 @@ npm install -g grunt grunt-cli
 apt-get -y install nginx
 
 
-exit(0)
+exit 0
 
 NGINX:
 

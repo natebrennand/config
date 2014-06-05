@@ -46,8 +46,12 @@
 	"highlight_line": true,
 	"ignored_packages":
 	[
+		"Fold Python Docstrings",
+		"GitGutter",
+		"Theme - Soda",
 		"sublimelint",
-		"AngularJS"
+		"AngularJS",
+		"Color Highlighter"
 	],
 	"indent_subsequent_lines": true,
 	"margin": 2,
