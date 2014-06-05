@@ -31,3 +31,6 @@ alias untar='tar -zxvf'
 # choo choo
 alias sl='\sl'
 
+# golang
+#alias gget='pushd; go get 
+
