@@ -2,45 +2,52 @@
 " vimrc
 " Nate Brennand
 
+set shell=/bin/bash
+
 " Vundle setup
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
-" Bundles
-Bundle 'airblade/vim-gitgutter'
-Bundle 'mutewinter/nginx.vim'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'tpope/vim-fugitive'
-Bundle 'vim-coffee-script'
-Bundle 'vim-less'
-Bundle 'flazz/vim-colorschemes'
-Bundle 'jnwhiteh/vim-golang'
-Bundle 'Blackrush/vim-gocode'
+" Plugins
+" git status reminder
+Plugin 'airblade/vim-gitgutter'
+" nginx highlighting
+Plugin 'mutewinter/nginx.vim'
+" best thing since sliced bread
+Plugin 'Valloric/YouCompleteMe'
+" coffeescript highlighting
+Plugin 'vim-coffee-script'
+" less highlighting
+Plugin 'vim-less'
+" lotsa colorschemes
+Plugin 'flazz/vim-colorschemes'
+Plugin 'jnwhiteh/vim-golang'
+" Plugin 'Blackrush/vim-gocode'
+Plugin 'derekwyatt/vim-scala'
+
+Plugin 'undx/vim-gocode'
 
 " rainbow parens
-Bundle 'kien/rainbow_parentheses.vim'
+Plugin 'kien/rainbow_parentheses.vim'
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 " Airline
-Bundle 'bling/vim-airline'
+Plugin 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 set laststatus=2
 
-" indent guides
-Bundle 'vim-indent-guides'
-
 " Nerd Tree
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
 
 " Syntastic
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 
@@ -51,11 +58,16 @@ let g:syntastic_c_check_header = 1
 
 
 " Ctrl - P
-Bundle 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log,*.db,*.aux,*.pdf,*.pyc,*.min.js,*/jsmin/*,*.fls,*.fdb_latexmk,*.class,*.o     " MacOSX/Linux
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log,*.db,*.pdf
+set wildignore+=*.pyc                       " Python
+set wildignore+=*.min.js,*/jsmin/*          " JS
+set wildignore+=*.fls,*.aux,*.fdb_latexmk   " latex
+set wildignore+=*.class,*.jar,*.sbt         " Java / Scala
+set wildignore+=*.o                         " C
 
 " random
 set nocompatible    "This fixes the problem where arrow keys do not function properly on some systems.
@@ -64,18 +76,18 @@ set foldmethod=manual  "Lets you hide sections of code
 set showcmd     " Shows incomplete commands
 
 " appearance
-set mouse=a  "Allows you to click around the text editor with your mouse to move the cursor
-set number  "Enables line numbering
-set ruler " Shows cursor position
+set mouse=a     " Allows you to click around the text editor with your mouse to move the cursor
+set number      " Enables line numbering
+set ruler       " Shows cursor position
 set scrolloff=3 " leaves 3 spaces between top/bottom and cursor
-set showmatch "Highlights matching brackets in programming languages
+set showmatch   " Highlights matching brackets in programming languages
 
 " tabs
 set expandtab
-set tabstop=4   " Spaces instead of tabs
+set tabstop=4       " Spaces instead of tabs
 set shiftwidth=4
-set smarttab  "Improves tabbing
-set shiftwidth=4  "Assists code formatting
+set smarttab        " Improves tabbing
+set shiftwidth=4    " Assists code formatting
 
 " folding
 "set foldmethod=indent   " fold based on indentation
@@ -109,12 +121,15 @@ set synmaxcol=200                   " stop highlighting after 200 characters
 
 " markdown syntax
 au BufRead,BufNewFile *.md set filetype=markdown
-" golang syntax
-au BufRead,BufNewFile *.go set filetype=go
 " coffee syntax
 au BufRead,BufNewFile *.coffee set filetype=coffee
 " less syntax
 au BufRead,BufNewFile *.less set filetype=less
+
+
+" golang stuff
+au BufRead,BufNewFile *.go set filetype=go
+
 
 
 " use filetype specific vim settings
@@ -129,7 +144,7 @@ set winwidth=80     " default to a width of 80 columns
 no equalalways
 
 "key remappings 
-" commands: don't use shift when save/quit/etc ; --> : (in command mode)
+" commands: don't use shift when save/quit/etc ";" --> ":" (in command mode)
 noremap ; :
 " windows: rmap s to ctrl-W
 noremap s <C-W>
@@ -143,6 +158,6 @@ noremap k gk
 " copying
 vmap <C-C> :w !pbcopy<CR><CR>
 
-" spell check
+" spell check w/ f5
 :map <F5> :setlocal spell! spelllang=en_us<CR>
 
