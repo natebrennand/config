@@ -63,3 +63,8 @@ export PYTHONSTARTUP="$HOME/.pythonrc"
 
 # MOTD
 cat /etc/motd
+
+svim () {
+    vim $(find . -name \*.$1 | peco)
+}
+
