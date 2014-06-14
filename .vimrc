@@ -2,12 +2,13 @@
 " vimrc
 " Nate Brennand
 
-set shell=/bin/bash
-
 " Vundle setup
+set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
 Plugin 'gmarik/Vundle.vim'
 
 " Plugins
@@ -30,11 +31,9 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'undx/vim-gocode'
 
 " rainbow parens
-Plugin 'kien/rainbow_parentheses.vim'
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+Plugin 'oblitum/rainbow'
+let g:rainbow_active = 1
+
 
 " Airline
 Plugin 'bling/vim-airline'
@@ -68,6 +67,14 @@ set wildignore+=*.min.js,*/jsmin/*          " JS
 set wildignore+=*.fls,*.aux,*.fdb_latexmk   " latex
 set wildignore+=*.class,*.jar,*.sbt         " Java / Scala
 set wildignore+=*.o                         " C
+
+
+call vundle#end()
+
+" #############################
+" end of plugins
+" #############################
+
 
 " random
 set nocompatible    "This fixes the problem where arrow keys do not function properly on some systems.
