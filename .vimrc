@@ -166,5 +166,12 @@ noremap k gk
 vmap <C-C> :w !pbcopy<CR><CR>
 
 " spell check w/ f5
-:map <F5> :setlocal spell! spelllang=en_us<CR>
+map <F5> :setlocal spell! spelllang=en_us<CR>
+
+
+
+set listchars=eol:¬,tab:>-,trail:█,extends:>,precedes:-
+set list
+
+
 
