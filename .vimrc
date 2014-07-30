@@ -33,6 +33,8 @@ Plugin 'undx/vim-gocode'
 " rainbow parens
 Plugin 'oblitum/rainbow'
 let g:rainbow_active = 1
+let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
+let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
 
 
 " Airline
@@ -49,12 +51,15 @@ map <C-n> :NERDTreeToggle<CR>
 Plugin 'scrooloose/syntastic'
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
-
 let g:syntastic_python_checkers=['pyflakes']
-let g:syntastic_javascript_checkers = ['jshint']
-
 let g:syntastic_c_check_header = 1
+let g:syntastic_javascript_checkers = []
 
+
+
+" tern for JS
+Plugin 'marijnh/tern_for_vim'
+let g:tern_show_argument_hints = 'on_move'
 
 " Ctrl - P
 Plugin 'kien/ctrlp.vim'
@@ -67,7 +72,6 @@ set wildignore+=*.min.js,*/jsmin/*          " JS
 set wildignore+=*.fls,*.aux,*.fdb_latexmk   " latex
 set wildignore+=*.class,*.jar,*.sbt         " Java / Scala
 set wildignore+=*.o                         " C
-
 
 call vundle#end()
 
