@@ -27,13 +27,10 @@ PATH=/usr/local/heroku/bin:$PATH        # Added by the Heroku Toolbelt
 PATH=~/github/config/scripts:$PATH
 PATH=/usr/local/share/npm/bin:$PATH     # Add npm stuff
 PATH=/usr/local/opt/ruby/bin:$PATH      # Add gems
-PATH=/usr/local/Cellar/go/bin:$PATH      # Add go
+PATH=/usr/local/Cellar/go/1.2.1/bin:$PATH      # Add go
 PATH=$GOPATH:$PATH      # Add go
 PATH=$GOPATH/bin:$PATH      # Add go executables
 PATH=~/scripts:$PATH      # Add random scripts
-# FDK_EXE="/Users/nate/bin/FDK/Tools/osx" # font builder path links
-# export FDK_EXE
-# PATH=${PATH}:"/Users/nate/bin/FDK/Tools/osx"
 PATH=/usr/texbin:$PATH      # Add tex
 export PATH
 
@@ -41,25 +38,14 @@ export PATH
 #export DYLD_FALLBACK_LIBRARY_PATH=/Applications/Postgres.app/Contents/MacOS/lib:$DYLD_LIBRARY_PATH
 #alias psql="(. ~/.bash_profile; unset DYLD_FALLBACK_LIBRARY_PATH; psql)";
 
+# Docker (will find the IP if it is running)
+export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
+
 source $ZSH/oh-my-zsh.sh
 
 # aliases
 source /Users/nate/.login_ssh.sh
 source /Users/nate/.my_aliases.sh
-
-# RUBY ON RAILS
-#export PATH=$PATH:/usr/bin/ruby
-#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
-#eval "$(rbenv init -)"
-
-#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-#source $HOME/.rvm/scripts/rvm
-
-# Python shell auto-completion
-export PYTHONSTARTUP="$HOME/.pythonrc"
-
-# Z
-. ~/cloned/z/z.sh
 
 # MOTD
 cat /etc/motd
@@ -67,4 +53,3 @@ cat /etc/motd
 svim () {
     vim $(find . -name \*.$1 | peco)
 }
-
