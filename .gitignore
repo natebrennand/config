@@ -1,17 +1,4 @@
 
-# ignore all
-*/*
-.*
-
-!scripts/*
-!itermcolors/*
-!.vim/*
-
-
-# misc home directory stuff
-School
-links_to_read.md
-
-!.vim/bundle/*
-
+.vim/bundle
+.vim/syntax
 
