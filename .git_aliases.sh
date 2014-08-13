@@ -5,6 +5,7 @@ alias gst='git status'
 
 alias ga='git add'
 alias gc='git commit'
+alias gc!='git commit -amend'
 
 alias gd='git diff'
 alias gdc='git diff --cached'

@@ -2,9 +2,6 @@
     name = Nate Brennand
     email = natebrennand@gmail.com
 
-[credential]
-    helper = osxkeychain
-
 [color]
     ui = auto
 
