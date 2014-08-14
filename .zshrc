@@ -16,7 +16,7 @@ export EDITOR=vim
 export VISUAL=$EDITOR
 
 # Go path
-GOPATH=~
+GOPATH=~/go
 export GOPATH
 
 # PATH Variable
