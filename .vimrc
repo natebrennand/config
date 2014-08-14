@@ -1,4 +1,3 @@
-
 " vimrc
 " Nate Brennand
 
@@ -24,10 +23,8 @@ Plugin 'vim-coffee-script'
 Plugin 'vim-less'
 " lotsa colorschemes
 Plugin 'flazz/vim-colorschemes'
-Plugin 'jnwhiteh/vim-golang'
-" Plugin 'Blackrush/vim-gocode'
-Plugin 'derekwyatt/vim-scala'
-
+" go stuff
+Plugin 'fatih/vim-go'
 Plugin 'undx/vim-gocode'
 
 " rainbow parens
@@ -55,8 +52,6 @@ let g:syntastic_python_checkers=['pyflakes']
 let g:syntastic_c_check_header = 1
 let g:syntastic_javascript_checkers = []
 
-
-
 " tern for JS
 Plugin 'marijnh/tern_for_vim'
 let g:tern_show_argument_hints = 'on_move'
@@ -79,19 +74,16 @@ call vundle#end()
 " end of plugins
 " #############################
 
-
 " random
-set nocompatible    "This fixes the problem where arrow keys do not function properly on some systems.
-set backspace=2     "This makes the backspace key function like it does in other programs.
-set foldmethod=manual  "Lets you hide sections of code
-set showcmd     " Shows incomplete commands
+set backspace=2         " This makes the backspace key function like it does in other programs.
+set foldmethod=manual   " Lets you hide sections of code
+set showcmd             " Shows incomplete commands
 
 " appearance
-set mouse=a     " Allows you to click around the text editor with your mouse to move the cursor
-set number      " Enables line numbering
-set ruler       " Shows cursor position
-set scrolloff=3 " leaves 3 spaces between top/bottom and cursor
-set showmatch   " Highlights matching brackets in programming languages
+set relativenumber " Enables relative line numbering
+set ruler          " Shows cursor position in bottom bar
+set scrolloff=3    " leaves 3 spaces between top/bottom and cursor
+set showmatch      " Highlights matching brackets in programming languages
 
 " tabs
 set expandtab
@@ -101,7 +93,7 @@ set smarttab        " Improves tabbing
 set shiftwidth=4    " Assists code formatting
 
 " folding
-"set foldmethod=indent   " fold based on indentation
+set foldmethod=indent   " fold based on indentation
 set foldnestmax=5       " deepest fold in 10 levels
 set nofoldenable        " don't fold by default
 set foldlevel=1
@@ -109,12 +101,14 @@ set foldlevel=1
 " searching
 set hlsearch    " highlight search matches
 set incsearch   " searches as you type
-" set ignorecase  " case insensitive searching
+set ignorecase  " case insensitive searching
 set smartcase   " searches w/ case if there's a capital letter
+" redraw clears highlights at the same time
+nnoremap <C-L> :nohl<CR><C-L>
 
 " indenting
 set autoindent  "If you're indented, new lines will also be indented
-" set smartindent  "Automatically indents lines after opening a bracket in programming languages
+set smartindent  "Automatically indents lines after opening a bracket in programming languages
 
 " colors
 syntax on           "Enables syntax highlighting for programming languages
@@ -129,7 +123,6 @@ endif
 colorscheme jellybeans
 set synmaxcol=200                   " stop highlighting after 200 characters
 
-
 " markdown syntax
 au BufRead,BufNewFile *.md set filetype=markdown
 " coffee syntax
@@ -137,11 +130,8 @@ au BufRead,BufNewFile *.coffee set filetype=coffee
 " less syntax
 au BufRead,BufNewFile *.less set filetype=less
 
-
 " golang stuff
 au BufRead,BufNewFile *.go set filetype=go
-
-
 
 " use filetype specific vim settings
 " settings located in ~/.vim/after/ftplugin/
@@ -154,7 +144,10 @@ set cursorline
 set winwidth=80     " default to a width of 80 columns
 no equalalways
 
-"key remappings 
+" toggle pasting with f11
+set pastetoggle=<F11>
+
+" key remappings
 " commands: don't use shift when save/quit/etc ";" --> ":" (in command mode)
 noremap ; :
 " windows: rmap s to ctrl-W
@@ -172,10 +165,8 @@ vmap <C-C> :w !pbcopy<CR><CR>
 " spell check w/ f5
 map <F5> :setlocal spell! spelllang=en_us<CR>
 
-
-
+" adding special characters
 set listchars=eol:¬,tab:>-,trail:█,extends:>,precedes:-
 set list
-
 
 
