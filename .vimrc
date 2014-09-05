@@ -17,6 +17,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'mutewinter/nginx.vim'
 " best thing since sliced bread
 Plugin 'Valloric/YouCompleteMe'
+let g:ycm_global_ycm_extra_conf = '~/.ycm_global_ycm_extra_conf'
+let g:ycm_confirm_extra_conf = 0
 " coffeescript highlighting
 Plugin 'vim-coffee-script'
 " less highlighting
