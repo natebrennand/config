@@ -1,4 +1,8 @@
 
+# vim
+alias vi='vim'
+alias vim='vim -O'
+
 # aliases
 alias zshconfig="vim ~/.zshrc"
 alias l='ls -1h'
@@ -8,7 +12,6 @@ alias mtr="sudo mtr"                             # ping on steroids
 alias json='python -m json.tool'                 # pipe a json to this for pretty print
 alias server='python -m SimpleHTTPServer'
 alias latex='/usr/texbin/pdflatex'
-alias vi='vim'
 alias nosetests='nosetests -v'
 
 # git aliases

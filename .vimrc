@@ -25,7 +25,8 @@ Plugin 'vim-less'
 Plugin 'flazz/vim-colorschemes'
 " go stuff
 Plugin 'fatih/vim-go'
-Plugin 'undx/vim-gocode'
+" docker
+Plugin 'ekalinin/Dockerfile.vim'
 
 " rainbow parens
 Plugin 'oblitum/rainbow'
@@ -53,8 +54,7 @@ let g:syntastic_c_check_header = 1
 let g:syntastic_javascript_checkers = []
 
 " tern for JS
-Plugin 'marijnh/tern_for_vim'
-let g:tern_show_argument_hints = 'on_move'
+" Plugin 'marijnh/tern_for_vim'
 
 " Ctrl - P
 Plugin 'kien/ctrlp.vim'
@@ -93,7 +93,6 @@ set smarttab        " Improves tabbing
 set shiftwidth=4    " Assists code formatting
 
 " folding
-set foldmethod=indent   " fold based on indentation
 set foldnestmax=5       " deepest fold in 10 levels
 set nofoldenable        " don't fold by default
 set foldlevel=1
@@ -168,5 +167,4 @@ map <F5> :setlocal spell! spelllang=en_us<CR>
 " adding special characters
 set listchars=eol:¬,tab:>-,trail:█,extends:>,precedes:-
 set list
-
 
