@@ -25,6 +25,7 @@ Plugin 'vim-coffee-script'
 Plugin 'vim-less'
 " lotsa colorschemes
 Plugin 'flazz/vim-colorschemes'
+Plugin 'tangphillip/SunburstVIM'
 " go stuff
 Plugin 'fatih/vim-go'
 " docker
@@ -121,7 +122,11 @@ endif
 
 " color choices
 " colorscheme zephyr
-colorscheme jellybeans
+" colorscheme jellybeans
+colorscheme sunburst
+highlight Normal guibg=black guifg=white
+set background=dark
+
 set synmaxcol=200                   " stop highlighting after 200 characters
 
 " markdown syntax
