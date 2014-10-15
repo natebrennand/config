@@ -6,6 +6,8 @@ Should be in the following format:
 
 
 ```tex
+\begin{thebibliography}{1}
+
 \bibitem{<name>}
 Authors...
 Title
@@ -15,6 +17,8 @@ Publication and date
 Authors...
 Title
 Publication and date
+
+\end{thebibliography}
 ```
 
 
