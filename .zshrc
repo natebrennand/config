@@ -36,6 +36,9 @@ export PATH
 # Docker (will find the IP if it is running)
 export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
 
+# postgres
+EXPORT export PGDATA=/usr/local/var/postgres/
+
 # MOTD
 cat /etc/motd
 
