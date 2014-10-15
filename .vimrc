@@ -28,6 +28,7 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'tangphillip/SunburstVIM'
 " go stuff
 Plugin 'fatih/vim-go'
+let g:go_fmt_command = "goimports"
 " docker
 Plugin 'ekalinin/Dockerfile.vim'
 
@@ -85,7 +86,7 @@ set showcmd             " Shows incomplete commands
 " appearance
 set relativenumber " Enables relative line numbering
 set ruler          " Shows cursor position in bottom bar
-set scrolloff=3    " leaves 3 spaces between top/bottom and cursor
+set scrolloff=8    " leaves 8 lines between top/bottom and cursor
 set showmatch      " Highlights matching brackets in programming languages
 
 " tabs
@@ -135,9 +136,13 @@ au BufRead,BufNewFile *.md set filetype=markdown
 au BufRead,BufNewFile *.coffee set filetype=coffee
 " less syntax
 au BufRead,BufNewFile *.less set filetype=less
-
 " golang stuff
 au BufRead,BufNewFile *.go set filetype=go
+" ocaml
+au BufRead,BufNewFile *.ml,*.mli compiler ocaml
+set rtp+=/usr/local/share/ocamlmerlin/vim
+autocmd FileType ocaml source /Users/natebrennand/.opam/system/share/vim/syntax/ocp-indent.vim
+
 
 " use filetype specific vim settings
 " settings located in ~/.vim/after/ftplugin/
@@ -174,4 +179,5 @@ map <F5> :setlocal spell! spelllang=en_us<CR>
 " adding special characters
 set listchars=eol:¬,tab:>-,trail:█,extends:>,precedes:-
 set list
+
 
