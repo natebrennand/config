@@ -28,7 +28,6 @@ PATH=$PATH:~/.vim
 PATH=$PATH:/usr/local/sbin
 PATH=$PATH:/usr/local/heroku/bin         # Added by the Heroku Toolbelt
 PATH=$PATH:$GOPATH                       # Add go
-# PATH=$PATH:/usr/local/opt/go/libexec/bin # Add go
 PATH=$GOPATH/bin:$PATH                   # Add go executables
 PATH=/usr/texbin:$PATH                   # Add tex
 export PATH
@@ -36,12 +35,19 @@ export PATH
 # Docker (will find the IP if it is running)
 export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
 
-# postgres
-EXPORT export PGDATA=/usr/local/var/postgres/
-
 # MOTD
 cat /etc/motd
 
 svim () {
     vim $(find . -name \*.$1 | peco)
 }
+
+# fucking scala
+export BT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
+
+# OPAM configuration
+. /Users/natebrennand/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# sublime
+alias subl='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
+
