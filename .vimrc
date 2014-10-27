@@ -31,6 +31,8 @@ Plugin 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
 " docker
 Plugin 'ekalinin/Dockerfile.vim'
+" fucking scala
+Plugin 'derekwyatt/vim-scala'
 
 " rainbow parens
 Plugin 'oblitum/rainbow'
