@@ -40,6 +40,8 @@ let g:rainbow_active = 1
 let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
 let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
 
+" Autoclosing parens
+Plugin 'Raimondi/delimitMate'
 
 " Airline
 Plugin 'bling/vim-airline'
@@ -132,8 +134,11 @@ set background=dark
 
 set synmaxcol=200                   " stop highlighting after 200 characters
 
+" text
+au BufRead,BufNewFile *.txt setfiletype=text
 " markdown syntax
 au BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.md setlocal spell
 " coffee syntax
 au BufRead,BufNewFile *.coffee set filetype=coffee
 " less syntax
