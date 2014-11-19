@@ -17,7 +17,6 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'mutewinter/nginx.vim'
 " best thing since sliced bread
 Plugin 'Valloric/YouCompleteMe'
-let g:ycm_global_ycm_extra_conf = '~/.ycm_global_ycm_extra_conf'
 let g:ycm_confirm_extra_conf = 0
 " coffeescript highlighting
 Plugin 'vim-coffee-script'
@@ -60,6 +59,8 @@ let g:syntastic_enable_signs=1
 let g:syntastic_python_checkers=['pyflakes']
 let g:syntastic_c_check_header = 1
 let g:syntastic_javascript_checkers = []
+let g:syntastic_ocaml_checkers = ['merlin']
+
 
 " tern for JS
 " Plugin 'marijnh/tern_for_vim'
@@ -147,8 +148,10 @@ au BufRead,BufNewFile *.less set filetype=less
 au BufRead,BufNewFile *.go set filetype=go
 " ocaml
 au BufRead,BufNewFile *.ml,*.mli compiler ocaml
-set rtp+=/usr/local/share/ocamlmerlin/vim
 autocmd FileType ocaml source /Users/natebrennand/.opam/system/share/vim/syntax/ocp-indent.vim
+let g:opamshare = substitute(system('opam config var share'),'\n$','','')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
+execute "set rtp+=" . g:opamshare . "/merlin/vimbufsync"
 
 
 " use filetype specific vim settings
