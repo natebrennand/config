@@ -61,6 +61,8 @@ let g:syntastic_c_check_header = 1
 let g:syntastic_javascript_checkers = []
 let g:syntastic_ocaml_checkers = ['merlin']
 
+Plugin 'jrk/vim-ocaml'
+
 
 " tern for JS
 " Plugin 'marijnh/tern_for_vim'
@@ -70,6 +72,7 @@ Plugin 'kien/ctrlp.vim'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log,*.db,*.pdf
 set wildignore+=*.pyc                       " Python
 set wildignore+=*.min.js,*/jsmin/*          " JS
