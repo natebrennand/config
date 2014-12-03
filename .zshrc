@@ -39,7 +39,10 @@ export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
 cat /etc/motd
 
 svim () {
-    vim $(find . -name \*.$1 | peco)
+    f=$(find . -name \*.$1 | peco)
+    if [[ -n $f ]]; then
+        vim "$f"
+    fi
 }
 
 # fucking scala
