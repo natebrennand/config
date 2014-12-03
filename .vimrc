@@ -17,7 +17,6 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'mutewinter/nginx.vim'
 " best thing since sliced bread
 Plugin 'Valloric/YouCompleteMe'
-let g:ycm_global_ycm_extra_conf = '~/.ycm_global_ycm_extra_conf'
 let g:ycm_confirm_extra_conf = 0
 " coffeescript highlighting
 Plugin 'vim-coffee-script'
@@ -40,6 +39,8 @@ let g:rainbow_active = 1
 let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
 let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
 
+" Autoclosing parens
+Plugin 'Raimondi/delimitMate'
 
 " Airline
 Plugin 'bling/vim-airline'
@@ -58,6 +59,10 @@ let g:syntastic_enable_signs=1
 let g:syntastic_python_checkers=['pyflakes']
 let g:syntastic_c_check_header = 1
 let g:syntastic_javascript_checkers = []
+let g:syntastic_ocaml_checkers = ['merlin']
+
+Plugin 'jrk/vim-ocaml'
+
 
 " tern for JS
 " Plugin 'marijnh/tern_for_vim'
@@ -67,7 +72,8 @@ Plugin 'kien/ctrlp.vim'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log,*.db,*.pdf
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log,*.db,*.pdf,*.cmo,*.cmi
 set wildignore+=*.pyc                       " Python
 set wildignore+=*.min.js,*/jsmin/*          " JS
 set wildignore+=*.fls,*.aux,*.fdb_latexmk   " latex
@@ -132,8 +138,11 @@ set background=dark
 
 set synmaxcol=200                   " stop highlighting after 200 characters
 
+" text
+au BufRead,BufNewFile *.txt setfiletype=text
 " markdown syntax
 au BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.md setlocal spell
 " coffee syntax
 au BufRead,BufNewFile *.coffee set filetype=coffee
 " less syntax
@@ -142,8 +151,10 @@ au BufRead,BufNewFile *.less set filetype=less
 au BufRead,BufNewFile *.go set filetype=go
 " ocaml
 au BufRead,BufNewFile *.ml,*.mli compiler ocaml
-set rtp+=/usr/local/share/ocamlmerlin/vim
 autocmd FileType ocaml source /Users/natebrennand/.opam/system/share/vim/syntax/ocp-indent.vim
+let g:opamshare = substitute(system('opam config var share'),'\n$','','')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
+execute "set rtp+=" . g:opamshare . "/merlin/vimbufsync"
 
 
 " use filetype specific vim settings
@@ -181,5 +192,12 @@ map <F5> :setlocal spell! spelllang=en_us<CR>
 " adding special characters
 set listchars=eol:¬,tab:>-,trail:█,extends:>,precedes:-
 set list
+
+
+" making vim run fast
+set ttyfast " u got a fast terminal
+set ttyscroll=3
+set lazyredraw " to avoid scrolling problems
+
 
 
