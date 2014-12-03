@@ -46,6 +46,7 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='luna'
 set laststatus=2
 
 " Nerd Tree
