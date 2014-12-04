@@ -159,4 +159,8 @@ map <F5> :setlocal spell! spelllang=en_us<CR>
 set listchars=eol:¬,tab:>-,trail:█,extends:>,precedes:-
 set list
 
+" making vim run fast
+set ttyfast " u got a fast terminal
+set ttyscroll=3
+set lazyredraw " to avoid scrolling problems
 
