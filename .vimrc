@@ -13,23 +13,27 @@ Plugin 'gmarik/Vundle.vim'
 " Plugins
 " git status reminder
 Plugin 'airblade/vim-gitgutter'
-" nginx highlighting
-Plugin 'mutewinter/nginx.vim'
+
 " best thing since sliced bread
 Plugin 'Valloric/YouCompleteMe'
 let g:ycm_confirm_extra_conf = 0
-" coffeescript highlighting
+
+" various highlighters
 Plugin 'vim-coffee-script'
-" less highlighting
 Plugin 'vim-less'
+Plugin 'mutewinter/nginx.vim'
+
 " lotsa colorschemes
 Plugin 'flazz/vim-colorschemes'
 Plugin 'tangphillip/SunburstVIM'
+
 " go stuff
 Plugin 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
+
 " docker
 Plugin 'ekalinin/Dockerfile.vim'
+
 " fucking scala
 Plugin 'derekwyatt/vim-scala'
 
@@ -61,12 +65,6 @@ let g:syntastic_python_checkers=['pyflakes']
 let g:syntastic_c_check_header = 1
 let g:syntastic_javascript_checkers = []
 let g:syntastic_ocaml_checkers = ['merlin']
-
-Plugin 'jrk/vim-ocaml'
-
-
-" tern for JS
-" Plugin 'marijnh/tern_for_vim'
 
 " Ctrl - P
 Plugin 'kien/ctrlp.vim'
@@ -115,6 +113,7 @@ set hlsearch    " highlight search matches
 set incsearch   " searches as you type
 set ignorecase  " case insensitive searching
 set smartcase   " searches w/ case if there's a capital letter
+"
 " redraw clears highlights at the same time
 nnoremap <C-L> :nohl<CR><C-L>
 
@@ -130,13 +129,10 @@ elseif $TERM =~ '^xterm$'
     set t_Co=256
 endif
 
-" color choices
-" colorscheme zephyr
-" colorscheme jellybeans
+" color choices [ zephyr jellybeans ]
 colorscheme sunburst
 highlight Normal guibg=black guifg=white
 set background=dark
-
 set synmaxcol=200                   " stop highlighting after 200 characters
 
 " text
@@ -153,13 +149,12 @@ au BufRead,BufNewFile *.go set filetype=go
 " ocaml
 au BufRead,BufNewFile *.ml,*.mli compiler ocaml
 autocmd FileType ocaml source /Users/natebrennand/.opam/system/share/vim/syntax/ocp-indent.vim
+
 let g:opamshare = substitute(system('opam config var share'),'\n$','','')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
 execute "set rtp+=" . g:opamshare . "/merlin/vimbufsync"
 
-
-" use filetype specific vim settings
-" settings located in ~/.vim/after/ftplugin/
+" use filetype specific vim settings, settings located in ~/.vim/after/ftplugin/
 filetype indent plugin on
 
 " show cursor position
@@ -182,8 +177,6 @@ noremap j gj
 noremap k gk
 
 " clipboard stuff
-" cutting
-" vmap <C-x> :!pbcopy<CR>
 " copying
 vmap <C-C> :w !pbcopy<CR><CR>
 
@@ -194,11 +187,7 @@ map <F5> :setlocal spell! spelllang=en_us<CR>
 set listchars=eol:¬,tab:>-,trail:█,extends:>,precedes:-
 set list
 
-
 " making vim run fast
 set ttyfast " u got a fast terminal
 set ttyscroll=3
 set lazyredraw " to avoid scrolling problems
-
-
-
