@@ -38,6 +38,8 @@ export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
 # MOTD
 cat /etc/motd
 
+# Takes a filetype suffix as an argument and finds all instances in the underlying filetree
+#   great for deep filetrees with few files (java/scala)
 svim () {
     f=$(find . -name \*.$1 | peco)
     if [[ -n $f ]]; then
@@ -45,7 +47,7 @@ svim () {
     fi
 }
 
-# fucking scala
+# fucking scala.....
 export BT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
 
 # OPAM configuration
