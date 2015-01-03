@@ -31,20 +31,27 @@ Plugin 'tangphillip/SunburstVIM'
 Plugin 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
 
+" tagbar
+" Plugin 'majutsushi/tagbar'
+" noremap t :TagbarToggle<CR>
+
 " docker
 Plugin 'ekalinin/Dockerfile.vim'
 
 " fucking scala
 Plugin 'derekwyatt/vim-scala'
 
+" LISP
 " rainbow parens
 Plugin 'oblitum/rainbow'
 let g:rainbow_active = 1
 let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
 let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
-
 " Autoclosing parens
 Plugin 'Raimondi/delimitMate'
+" slime replacement
+Plugin 'kovisoft/slimv'
+let g:paredit_mode=0
 
 " Airline
 Plugin 'bling/vim-airline'
@@ -93,7 +100,7 @@ set showcmd             " Shows incomplete commands
 " appearance
 set relativenumber " Enables relative line numbering
 set ruler          " Shows cursor position in bottom bar
-set scrolloff=8    " leaves 8 lines between top/bottom and cursor
+set scrolloff=4    " leaves 4 lines between top/bottom and cursor
 set showmatch      " Highlights matching brackets in programming languages
 
 " tabs
