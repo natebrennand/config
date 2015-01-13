@@ -1,8 +1,7 @@
 
-#config files
+#Config Files
 
 Mostly here for ease of use in transferring config for work computers and VM's.
-
 
 
 
@@ -12,7 +11,8 @@ Generally consists of copying over the dotfiles.
 If I do it often enough I'll find a script to do it.
 
 
-## Youcompletem
+
+## Youcompleteme
 
 ```bash
 cd ~/.vim/bundle/YouCompleteMe
@@ -20,7 +20,23 @@ cd ~/.vim/bundle/YouCompleteMe
 ```
 
 
-## [Merlin](https://github.com/the-lambda-church/merlin)
+## Golang
+
+Vim-go:
+Remember to run `:GoInstallBinaries`
+
+
+## Python
+
+```bash
+pip install flake8 nose
+```
+
+
+
+## Ocaml
+
+[Merlin](https://github.com/the-lambda-church/merlin)
 
 Installable via Opam.
 
