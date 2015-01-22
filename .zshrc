@@ -30,6 +30,7 @@ PATH=$PATH:/usr/local/heroku/bin         # Added by the Heroku Toolbelt
 PATH=$PATH:$GOPATH                       # Add go
 PATH=$GOPATH/bin:$PATH                   # Add go executables
 PATH=/usr/texbin:$PATH                   # Add tex
+PATH=/usr/local/Cellar/go/1.4/libexec/bin/:$PATH # other parts of the go toolchain
 export PATH
 
 # Docker (will find the IP if it is running)
@@ -45,6 +46,14 @@ svim () {
     if [[ -n $f ]]; then
         vim "$f"
     fi
+}
+
+start_redis() {
+    redis-server /usr/local/etc/redis.conf
+}
+
+stop_redis() {
+    kill < $(cat /usr/local/var/run/redis.pid)
 }
 
 # fucking scala.....
