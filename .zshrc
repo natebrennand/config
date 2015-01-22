@@ -53,7 +53,7 @@ start_redis() {
 }
 
 stop_redis() {
-    kill < $(cat /usr/local/var/run/redis.pid)
+    kill $(cat /usr/local/var/run/redis.pid)
 }
 
 # fucking scala.....
