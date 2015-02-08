@@ -30,6 +30,12 @@ Plugin 'tangphillip/SunburstVIM'
 " go stuff
 Plugin 'fatih/vim-go'
 let g:go_fmt_command = "goimports"
+" add some shortcuts for useful commands
+au FileType go nmap <Leader>e <Plug>(go-rename)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <Leader>d <Plug>(go-doc-vertical)
+
+
 
 " tagbar
 " Plugin 'majutsushi/tagbar'
@@ -189,6 +195,9 @@ vmap <C-C> :w !pbcopy<CR><CR>
 
 " spell check w/ f5
 map <F5> :setlocal spell! spelllang=en_us<CR>
+
+" remapping the leader key to comma
+let mapleader = ","
 
 " adding special characters
 set listchars=eol:¬,tab:>-,trail:█,extends:>,precedes:-
