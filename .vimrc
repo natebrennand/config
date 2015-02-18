@@ -207,3 +207,10 @@ set list
 set ttyfast " u got a fast terminal
 set ttyscroll=3
 set lazyredraw " to avoid scrolling problems
+
+" folding
+set foldmethod=indent " fold based off of indentation
+" toggle folds using the space bar
+nnoremap <Space> za
+
+
