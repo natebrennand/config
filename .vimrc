@@ -29,17 +29,6 @@ Plugin 'tangphillip/SunburstVIM'
 
 " go stuff
 Plugin 'fatih/vim-go'
-let g:go_fmt_command = "goimports"
-" add some shortcuts for useful commands
-au FileType go nmap <Leader>e <Plug>(go-rename)
-au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <Leader>d <Plug>(go-doc-vertical)
-
-
-
-" tagbar
-" Plugin 'majutsushi/tagbar'
-" noremap t :TagbarToggle<CR>
 
 " docker
 Plugin 'ekalinin/Dockerfile.vim'
@@ -53,8 +42,10 @@ Plugin 'oblitum/rainbow'
 let g:rainbow_active = 1
 let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
 let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
+
 " Autoclosing parens
 Plugin 'Raimondi/delimitMate'
+
 " slime replacement
 Plugin 'kovisoft/slimv'
 let g:paredit_mode=0
@@ -74,10 +65,8 @@ map <C-n> :NERDTreeToggle<CR>
 Plugin 'scrooloose/syntastic'
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
-let g:syntastic_python_checkers=['pyflakes']
 let g:syntastic_c_check_header = 1
 let g:syntastic_javascript_checkers = []
-let g:syntastic_ocaml_checkers = ['merlin']
 
 " Ctrl - P
 Plugin 'kien/ctrlp.vim'
@@ -85,11 +74,8 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log,*.db,*.pdf,*.cmo,*.cmi
-set wildignore+=*.pyc                       " Python
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log,*.db,*.pdf
 set wildignore+=*.min.js,*/jsmin/*          " JS
-set wildignore+=*.fls,*.aux,*.fdb_latexmk   " latex
-set wildignore+=*.class,*.jar,*.sbt         " Java / Scala
 set wildignore+=*.o                         " C
 
 call vundle#end()
@@ -161,7 +147,6 @@ au BufRead,BufNewFile *.less set filetype=less
 au BufRead,BufNewFile *.go set filetype=go
 " ocaml
 au BufRead,BufNewFile *.ml,*.mli compiler ocaml
-autocmd FileType ocaml source /Users/natebrennand/.opam/system/share/vim/syntax/ocp-indent.vim
 
 let g:opamshare = substitute(system('opam config var share'),'\n$','','')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
