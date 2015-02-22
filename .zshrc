@@ -37,14 +37,14 @@ export PATH
 export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
 
 # MOTD
-cat /etc/motd
+# cat /etc/motd
 
 # Takes a filetype suffix as an argument and finds all instances in the underlying filetree
 #   great for deep filetrees with few files (java/scala)
 svim () {
-    f=$(find . -name \*.$1 | peco)
-    if [[ -n $f ]]; then
-        vim "$f"
+    res=$(find . -name \*.$1 | peco)
+    if [[ -n $res ]]; then
+        echo "$res" | xargs vim -O
     fi
 }
 
