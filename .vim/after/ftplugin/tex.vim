@@ -14,3 +14,5 @@ syn match texOnlyMath /[\^]/
 
 set synmaxcol=1000                   " stop highlighting after 1000 characters
 
+set wildignore+=*.fls,*.aux,*.fdb_latexmk
+

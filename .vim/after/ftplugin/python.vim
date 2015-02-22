@@ -8,3 +8,7 @@ set colorcolumn=81
 setlocal expandtab      " expands tabs to 4 spaces
 setlocal autoindent
 
+let g:syntastic_python_checkers=['pyflakes']
+
+set wildignore+=*.pyc
+

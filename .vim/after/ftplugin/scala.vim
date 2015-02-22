@@ -10,3 +10,5 @@ setlocal expandtab
 set tabstop=4
 set shiftwidth=4
 
+
+set wildignore+=*.class,*.jar,*.sbt
