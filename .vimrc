@@ -16,7 +16,8 @@ Plugin 'airblade/vim-gitgutter'
 
 " best thing since sliced bread
 Plugin 'Valloric/YouCompleteMe'
-let g:ycm_confirm_extra_conf = 0
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+
 
 " various highlighters
 Plugin 'vim-coffee-script'
@@ -75,8 +76,9 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log,*.db,*.pdf
-set wildignore+=*.min.js,*/jsmin/*          " JS
-set wildignore+=*.o                         " C
+set wildignore+=*.min.js,*/jsmin/* " JS
+set wildignore+=*.o                " C
+set wildignore+=*/Godeps/*         " Go
 
 call vundle#end()
 
@@ -190,7 +192,6 @@ set list
 
 " making vim run fast
 set ttyfast " u got a fast terminal
-set ttyscroll=3
 set lazyredraw " to avoid scrolling problems
 
 " folding
