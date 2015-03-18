@@ -12,7 +12,7 @@ plugins=(git brew lol pip sublime zsh-syntax-highlighting vi-mode)
 ZSH_THEME="robbyrussell"
 
 # vim
-export EDITOR=vim
+export EDITOR=nvim
 export VISUAL=$EDITOR
 
 # Go path
@@ -30,7 +30,6 @@ PATH=$PATH:/usr/local/heroku/bin         # Added by the Heroku Toolbelt
 PATH=$PATH:$GOPATH                       # Add go
 PATH=$GOPATH/bin:$PATH                   # Add go executables
 PATH=/usr/texbin:$PATH                   # Add tex
-PATH=/usr/local/Cellar/go/1.4/libexec/bin/:$PATH # other parts of the go toolchain
 export PATH
 
 # Docker (will find the IP if it is running)
@@ -42,9 +41,14 @@ export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
 # Takes a filetype suffix as an argument and finds all instances in the underlying filetree
 #   great for deep filetrees with few files (java/scala)
 svim () {
-    res=$(find . -name \*.$1 | peco)
+    res=$(find . -path ./Godeps -prune -o -name \*.$1 | peco)
     if [[ -n $res ]]; then
-        echo "$res" | xargs vim -O
+        # open w/ neovim if it's installed
+        if hash nvim 2>/dev/null; then
+            echo "$res" | xargs nvim -O
+        else
+            echo "$res" | xargs vim -O
+        fi
     fi
 }
 
