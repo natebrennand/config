@@ -30,10 +30,15 @@ PATH=$PATH:/usr/local/heroku/bin         # Added by the Heroku Toolbelt
 PATH=$PATH:$GOPATH                       # Add go
 PATH=$GOPATH/bin:$PATH                   # Add go executables
 PATH=/usr/texbin:$PATH                   # Add tex
+PATH=/usr/local/Cellar/go/1.4/libexec/bin:$PATH # other parts of the go toolchain
 export PATH
 
+export DOCKER_CERT_PATH=/Users/nate/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
+export DOCKER_HOST=tcp://192.168.59.103:2376
+
 # Docker (will find the IP if it is running)
-export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
+# export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
 
 # MOTD
 # cat /etc/motd
