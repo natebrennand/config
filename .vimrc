@@ -78,7 +78,7 @@ let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log,*.db,*.pdf
 set wildignore+=*.min.js,*/jsmin/* " JS
 set wildignore+=*.o                " C
-set wildignore+=*/Godeps/*         " Go
+set wildignore+=*Godeps*         " Go
 
 call vundle#end()
 
