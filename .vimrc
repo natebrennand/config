@@ -5,6 +5,8 @@
 set nocompatible
 filetype off
 
+let g:python_host_prog='/usr/local/bin/python'
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -40,9 +42,15 @@ Plugin 'derekwyatt/vim-scala'
 " LISP
 " rainbow parens
 Plugin 'oblitum/rainbow'
-let g:rainbow_active = 1
+au FileType c,cpp,clj,go,python call rainbow#load()
 let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
 let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
+" clojure
+Plugin 'guns/vim-clojure-static'
+Plugin 'guns/vim-clojure-highlight'
+Plugin 'tpope/vim-leiningen'
+Plugin 'tpope/vim-fireplace'
+
 
 " Autoclosing parens
 Plugin 'Raimondi/delimitMate'
@@ -131,10 +139,11 @@ elseif $TERM =~ '^xterm$'
 endif
 
 " color choices [ zephyr jellybeans ]
-colorscheme sunburst
-highlight Normal guibg=black guifg=white
 set background=dark
-set synmaxcol=200                   " stop highlighting after 200 characters
+" colorscheme sunburst
+highlight Normal guibg=black guifg=white
+colorscheme molokai
+" set synmaxcol=200                   " stop highlighting after 200 characters
 
 " text
 au BufRead,BufNewFile *.txt setfiletype=text
@@ -148,11 +157,13 @@ au BufRead,BufNewFile *.less set filetype=less
 " golang stuff
 au BufRead,BufNewFile *.go set filetype=go
 " ocaml
-au BufRead,BufNewFile *.ml,*.mli compiler ocaml
+au BufRead,BufNewFile *.ml,*.mli set filetype=ocaml
+
 
 let g:opamshare = substitute(system('opam config var share'),'\n$','','')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
-execute "set rtp+=" . g:opamshare . "/merlin/vimbufsync"
+" execute "set rtp+=" . g:opamshare . "/merlin/vim"
+" execute "set rtp+=" . g:opamshare . "/merlin/vimbufsync"
+set rtp+=/usr/local/share/ocamlmerlin/vim
 
 " use filetype specific vim settings, settings located in ~/.vim/after/ftplugin/
 filetype indent plugin on
@@ -200,3 +211,6 @@ set foldmethod=indent " fold based off of indentation
 nnoremap <Space> za
 
 
+function RemoveTrailing ()
+    :%s/\s\+$//
+endfunction
