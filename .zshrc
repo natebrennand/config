@@ -21,6 +21,7 @@ export GOPATH
 
 # PATH Variable
 PATH=/bin
+PATH=/sbin:$PATH
 PATH=/usr/sbin:$PATH
 PATH=/usr/bin:$PATH
 PATH=/usr/local/bin:$PATH
@@ -53,7 +54,7 @@ svim () {
 }
 
 start_redis() {
-    redis-server /usr/local/etc/redis.conf
+    redis-server /usr/local/etc/redis.conf &
 }
 
 stop_redis() {
