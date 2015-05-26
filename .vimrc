@@ -211,6 +211,12 @@ set foldmethod=indent " fold based off of indentation
 nnoremap <Space> za
 
 
-function RemoveTrailing ()
-    :%s/\s\+$//
+function StripTrailingWhitespace()
+  if !&binary && &filetype != 'diff'
+    normal mz
+    normal Hmy
+    %s/\s\+$//e
+    normal 'yz<CR>
+    normal `z
+  endif
 endfunction
