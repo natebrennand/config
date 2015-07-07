@@ -32,6 +32,12 @@ Plugin 'tangphillip/SunburstVIM'
 
 " go stuff
 Plugin 'fatih/vim-go'
+let g:go_fmt_command = "goimports"
+" add some shortcuts for useful commands
+au FileType go nmap <Leader>e <Plug>(go-rename)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <Leader>d <Plug>(go-doc-vertical)
+
 
 " docker
 Plugin 'ekalinin/Dockerfile.vim'
@@ -84,9 +90,14 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log,*.db,*.pdf
-set wildignore+=*.min.js,*/jsmin/* " JS
-set wildignore+=*.o                " C
-set wildignore+=*/Godeps/*         " Go
+set wildignore+=*.cmo,*.cmi                 " ocaml"
+set wildignore+=*.pyc                       " Python
+set wildignore+=*.min.js,*/jsmin/*          " JS
+set wildignore+=*.fls,*.aux,*.fdb_latexmk   " latex
+set wildignore+=*.class,*.jar,*.sbt         " Java / Scala
+set wildignore+=*.o                         " C
+set wildignore+=*Godeps*                    " Go
+
 
 call vundle#end()
 
