@@ -11,8 +11,13 @@ source ~/.git_aliases.sh
 plugins=(git brew lol pip sublime zsh-syntax-highlighting vi-mode)
 ZSH_THEME="robbyrussell"
 
-# vim
-export EDITOR=nvim
+# (neo)vim
+if hash nvim 2>/dev/null;
+then
+    export EDITOR=nvim
+else
+    export EDITOR=vim
+fi
 export VISUAL=$EDITOR
 
 # Go path
@@ -42,7 +47,7 @@ export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
 # Takes a filetype suffix as an argument and finds all instances in the underlying filetree
 #   great for deep filetrees with few files (java/scala)
 svim () {
-    res=$(find . -path ./Godeps -prune -o -name \*.$1 | peco)
+    res=$(find .  -name \*.$1 -not -path "*Godeps*" | peco)
     if [[ -n $res ]]; then
         # open w/ neovim if it's installed
         if hash nvim 2>/dev/null; then
