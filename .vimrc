@@ -170,10 +170,10 @@ au BufRead,BufNewFile *.go set filetype=go
 " ocaml
 au BufRead,BufNewFile *.ml,*.mli set filetype=ocaml
 
-
+" ocaml plugin stuff
 let g:opamshare = substitute(system('opam config var share'),'\n$','','')
-" execute "set rtp+=" . g:opamshare . "/merlin/vim"
-" execute "set rtp+=" . g:opamshare . "/merlin/vimbufsync"
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
+execute "set rtp+=" . g:opamshare . "/merlin/vimbufsync"
 set rtp+=/usr/local/share/ocamlmerlin/vim
 
 " use filetype specific vim settings, settings located in ~/.vim/after/ftplugin/
