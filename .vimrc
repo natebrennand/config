@@ -170,6 +170,12 @@ au BufRead,BufNewFile *.go set filetype=go
 " ocaml
 au BufRead,BufNewFile *.ml,*.mli set filetype=ocaml
 
+" use ruby syntax in Vagrantfiles
+augroup vagrant
+    au!
+    au BufRead,BufNewFile Vagrantfile set filetype=ruby
+augroup END
+
 " ocaml plugin stuff
 let g:opamshare = substitute(system('opam config var share'),'\n$','','')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
