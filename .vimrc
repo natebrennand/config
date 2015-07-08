@@ -32,7 +32,8 @@ Plugin 'tangphillip/SunburstVIM'
 
 " go stuff
 Plugin 'fatih/vim-go'
-let g:go_fmt_command = "goimports"
+let g:go_hightlight_functions = 1
+let g:go_hightlight_methods = 1
 " add some shortcuts for useful commands
 au FileType go nmap <Leader>e <Plug>(go-rename)
 au FileType go nmap <leader>t <Plug>(go-test)
@@ -82,7 +83,9 @@ let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_c_check_header = 1
 let g:syntastic_javascript_checkers = []
-let g:syntastic_python_checkers = ['pep8']
+let g:syntastic_go_checkers = ['golint', 'govet']
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_args = '--ignore=E111 --max-line-length 100'
 
 " Ctrl - P
 Plugin 'kien/ctrlp.vim'
