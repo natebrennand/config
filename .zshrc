@@ -8,7 +8,7 @@ source ~/.my_aliases.sh
 source ~/.git_aliases.sh
 
 # oh-my-zsh
-plugins=(git brew lol pip sublime zsh-syntax-highlighting vi-mode)
+plugins=(brew lol pip sublime zsh-syntax-highlighting vi-mode)
 ZSH_THEME="robbyrussell"
 
 # (neo)vim
@@ -39,7 +39,7 @@ PATH=/usr/texbin:$PATH                   # Add tex
 export PATH
 
 # Docker (will find the IP if it is running)
-export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
+# export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
 
 # MOTD
 # cat /etc/motd
