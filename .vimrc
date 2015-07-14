@@ -83,7 +83,7 @@ let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_c_check_header = 1
 let g:syntastic_javascript_checkers = []
-let g:syntastic_go_checkers = ['golint', 'govet']
+let g:syntastic_go_checkers = ['go', 'golint', 'govet']
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = '--ignore=E111 --max-line-length 100'
 
