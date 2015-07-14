@@ -75,3 +75,7 @@ export BT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxP
 # sublime
 alias subl='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
 
+
+
+# work stuff
+source ~/.bash_profile
