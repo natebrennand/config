@@ -157,7 +157,7 @@ endif
 set background=dark
 " colorscheme sunburst
 highlight Normal guibg=black guifg=white
-colorscheme molokai
+colorscheme monokain
 " set synmaxcol=200                   " stop highlighting after 200 characters
 
 " text
