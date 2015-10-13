@@ -196,7 +196,6 @@ set cursorline
 
 " window stuff
 set winwidth=80     " default to a width of 80 columns
-no equalalways
 
 " toggle pasting with f11
 set pastetoggle=<F11>
