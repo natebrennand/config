@@ -9,7 +9,6 @@ alias l='ls -1h'
 alias ll='ls -alF'
 alias less="/usr/share/vim/vim73/macros/less.sh" # coloring while using less
 alias mtr="sudo mtr"                             # ping on steroids
-alias json='python -m json.tool'                 # pipe a json to this for pretty print
 alias server='python -m SimpleHTTPServer'
 alias latex='/usr/texbin/pdflatex'
 alias nosetests='nosetests -v'
@@ -21,6 +20,7 @@ alias glog='git log --stat --oneline'
 alias glg='git lg'
 alias gd='git diff --word-diff'
 alias gl='git pull --rebase'
+alias grc='git rebase --continue'
 
 # motd aliases
 alias etodo='sudo vim /etc/motd'
