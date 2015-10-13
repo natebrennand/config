@@ -1,4 +1,4 @@
-" vimrc
+
 " Nate Brennand
 
 " Vundle setup
@@ -22,7 +22,6 @@ let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
 
 " various highlighters
-Plugin 'vim-coffee-script'
 Plugin 'vim-less'
 Plugin 'mutewinter/nginx.vim'
 
@@ -45,6 +44,9 @@ Plugin 'ekalinin/Dockerfile.vim'
 
 " fucking scala
 Plugin 'derekwyatt/vim-scala'
+
+" thrift...
+Bundle 'solarnz/thrift.vim'
 
 " LISP
 " rainbow parens
