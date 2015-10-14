@@ -22,6 +22,7 @@ let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
 
 " various highlighters
+Plugin 'vim-coffee-script'
 Plugin 'vim-less'
 Plugin 'mutewinter/nginx.vim'
 
