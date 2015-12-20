@@ -25,6 +25,7 @@ let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 Plugin 'vim-coffee-script'
 Plugin 'vim-less'
 Plugin 'mutewinter/nginx.vim'
+Plugin 'digitaltoad/vim-jade'
 
 " lotsa colorschemes
 Plugin 'flazz/vim-colorschemes'
