@@ -1,21 +1,48 @@
 #!/bin/sh
+set -e
 
 here=$(pwd)
 
+old_dir="$(pwd)/old"
+mkdir -p old
+
+setup_dir () {
+    local f
+    f=$1
+    echo "setting up dir: '$f'"
+    # copy existing files then remove them from HOME
+    cp -r "~/$f" "$old_dir/$f" || true
+    rm -rf ~/$f
+    ln -s $here/$f ~
+}
+
+setup () {
+    local f
+    f=$1
+    echo "operating on file: '$f'"
+
+    # copy existing files then remove them from HOME
+    cp ~/$f $old_dir/$f
+    rm ~/$f
+
+    ln -s $here/$f ~/$f
+}
+
+
 git submodule update --init --recursive
-ln -s $here/.vim ~/.vim
-ln -s $here/.vim ~/.nvim
-ln -s $here/.vimrc ~/.vimrc
-ln -s $here/.nvimrc ~/.nvimrc
-ln -s $here/.gitconfig ~/.gitconfig
-ln -s $here/.global_gitignore ~/.global_gitignore
-ln -s $here/.zshrc ~/.zshrc
-ln -s $here/.zpreztorc ~/.zpreztorc
-ln -s $here/.my_aliases.sh ~/.my_aliases.sh
-ln -s $here/.git_aliases.sh ~/.git_aliases.sh
+
+setup_dir .vim
+setup .vimrc
+setup .gitconfig
+setup .global_gitignore
+setup .zshrc
+setup .zpreztorc
+setup .my_aliases.sh
+setup .git_aliases.sh
+setup .zpreztorc
 
 vim +BundleInstall +qall
-
+vim +GoInstallBinaries +qall
 
 git submodule update --init --recursive
 unamestr=`uname`
