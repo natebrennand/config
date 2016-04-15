@@ -27,6 +27,5 @@ alias glo='git log --oneline --decorate --color'
 alias glg='git log --stat --max-count=10'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 alias glgg='git log --graph --max-count=10'
-
-
+alias gpuo='git push -u origin $(git name-rev --name-only HEAD)'
 

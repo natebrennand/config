@@ -75,7 +75,11 @@ export BT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxP
 # sublime
 alias subl='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
 
-
-
 # work stuff
-source ~/.bash_profile
+# source ~/.bash_profile
+# source ~/.bashrc
+source ~/.clever_bash
+. ~/nvm/nvm.sh
+source /usr/local/bin/virtualenvwrapper.sh
+export GOPATH=~/go
+export PATH=$PATH:$GOPATH/bin
