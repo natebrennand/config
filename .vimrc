@@ -1,14 +1,36 @@
 
 " Nate Brennand
 
+syntax on           "Enables syntax highlighting for programming languages
+if !has('nvim')
+    set nocompatible
+    set ttyfast " u got a fast terminal
+
+    " colors
+    if $TERM =~ '256color'
+        set t_Co=256
+    elseif $TERM =~ '^xterm$'
+        set t_Co=256
+    endif
+endif
+
+if has('nvim')
+    let s:editor_root=expand("~/.config/nvim")
+else
+    let s:editor_root=expand("~/.vim")
+endif
+
 " Vundle setup
-set nocompatible
 filetype off
 
-let g:python_host_prog='/usr/local/bin/python'
+let g:python_host_prog='/usr/bin/python2'
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+let &rtp = &rtp . ',' . s:editor_root . '/bundle/Vundle.vim'
+
+" call vundle#rc(s:editor_root . '/bundle')
+call vundle#begin(s:editor_root . '/bundle')
+
+
 
 Plugin 'gmarik/Vundle.vim'
 
@@ -87,7 +109,7 @@ let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_c_check_header = 1
 let g:syntastic_javascript_checkers = []
-let g:syntastic_go_checkers = ['go', 'golint', 'govet']
+let g:syntastic_go_checkers = ['go', 'golint', 'go vet', 'goimports']
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = '--ignore=E111 --max-line-length 100'
 
@@ -149,13 +171,6 @@ nnoremap <C-L> :nohl<CR><C-L>
 set autoindent  "If you're indented, new lines will also be indented
 set smartindent  "Automatically indents lines after opening a bracket in programming languages
 
-" colors
-syntax on           "Enables syntax highlighting for programming languages
-if $TERM =~ '256color'
-    set t_Co=256
-elseif $TERM =~ '^xterm$'
-    set t_Co=256
-endif
 
 " color choices [ zephyr jellybeans ]
 set background=dark
@@ -185,10 +200,16 @@ augroup vagrant
 augroup END
 
 " ocaml plugin stuff
-let g:opamshare = substitute(system('opam config var share'),'\n$','','')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
-execute "set rtp+=" . g:opamshare . "/merlin/vimbufsync"
-set rtp+=/usr/local/share/ocamlmerlin/vim
+if system("which opam")
+    let g:opamshare = substitute(system('opam config var share'),'\n$','','')
+    execute "set rtp+=" . g:opamshare . "/merlin/vim"
+    execute "set rtp+=" . g:opamshare . "/merlin/vimbufsync"
+    set rtp+=/usr/local/share/ocamlmerlin/vim
+endif
+
+" webpack nonsense
+set backupcopy=yes
+
 
 " use filetype specific vim settings, settings located in ~/.vim/after/ftplugin/
 filetype indent plugin on
@@ -226,7 +247,6 @@ set listchars=eol:¬,tab:>-,trail:█,extends:>,precedes:-
 set list
 
 " making vim run fast
-set ttyfast " u got a fast terminal
 set lazyredraw " to avoid scrolling problems
 
 " folding
