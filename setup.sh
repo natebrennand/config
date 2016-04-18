@@ -22,8 +22,10 @@ setup () {
     echo "operating on file: '$f'"
 
     # copy existing files then remove them from HOME
-    cp ~/$f $old_dir/$f
-    rm ~/$f
+    if [[ -a ~/$f ]]; then
+        cp ~/$f $old_dir/$f
+        rm ~/$f
+    fi
 
     ln -s $here/$f ~/$f
 }
