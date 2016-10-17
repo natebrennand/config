@@ -49,6 +49,14 @@ Plugin 'vim-less'
 Plugin 'mutewinter/nginx.vim'
 Plugin 'digitaltoad/vim-jade'
 
+" Typescript
+Plugin 'leafgarland/typescript-vim'
+Plugin 'Quramy/tsuquyomi'
+" dependency of 'Quramy/tsuquyomi'
+Plugin 'Shougo/vimproc.vim'
+let g:tsuquyomi_disable_quickfix = 1
+autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+
 " lotsa colorschemes
 Plugin 'flazz/vim-colorschemes'
 Plugin 'tangphillip/SunburstVIM'
@@ -57,11 +65,19 @@ Plugin 'tangphillip/SunburstVIM'
 Plugin 'fatih/vim-go'
 let g:go_hightlight_functions = 1
 let g:go_hightlight_methods = 1
-" add some shortcuts for useful commands
-au FileType go nmap <Leader>e <Plug>(go-rename)
-au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <Leader>d <Plug>(go-doc-vertical)
+let g:go_highlight_types = 1
+let g:go_term_enabled = 1
+let g:go_term_mode = "split"
 
+" add some shortcuts for useful commands
+autocmd FileType go nmap <leader>e <Plug>(go-rename)
+autocmd FileType go nmap <leader>t <Plug>(go-test)
+autocmd FileType go nmap <leader>d <Plug>(go-doc-vertical)
+autocmd FileType go nmap <leader>b <Plug>(go-build)
+
+map <C-j> :lnext<CR>
+map <C-k> :lprevious<CR>
+nnoremap <leader>a :cclose<CR>
 
 " docker
 Plugin 'ekalinin/Dockerfile.vim'
@@ -106,20 +122,33 @@ map <C-n> :NERDTreeToggle<CR>
 
 " Syntastic
 Plugin 'scrooloose/syntastic'
+let g:syntastic_aggregate_errors = 1
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_c_check_header = 1
 let g:syntastic_javascript_checkers = []
-let g:syntastic_go_checkers = ['go', 'golint', 'go vet', 'goimports']
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = '--ignore=E111 --max-line-length 100'
+let g:syntastic_typescript_checkers=["eslint"]
+let g:syntastic_javascript_checkers = ['eslint']
+
+" let g:syntastic_go_checkers = ['go', 'golint', 'go vet', 'goimports']
+let g:syntastic_go_checkers = ['go', 'golint', 'govet', 'errcheck']
+" let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+
 
 " Ctrl - P
 Plugin 'kien/ctrlp.vim'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:40,results:40'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log,*.db,*.pdf
 set wildignore+=*.cmo,*.cmi                 " ocaml"
 set wildignore+=*.pyc                       " Python
