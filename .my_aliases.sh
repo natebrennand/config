@@ -32,3 +32,4 @@ alias untar='tar -zxvf'
 # choo choo
 alias sl='\sl'
 
+alias ghpr='hub pull-request'
