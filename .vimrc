@@ -57,10 +57,17 @@ Plugin 'tangphillip/SunburstVIM'
 Plugin 'fatih/vim-go'
 let g:go_hightlight_functions = 1
 let g:go_hightlight_methods = 1
+let g:go_fmt_command = "goimports"
+let g:go_list_type = "quickfix"
 " add some shortcuts for useful commands
-au FileType go nmap <Leader>e <Plug>(go-rename)
-au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <Leader>d <Plug>(go-doc-vertical)
+autocmd FileType go nmap <Leader>e <Plug>(go-rename)
+autocmd FileType go nmap <leader>t <Plug>(go-test)
+autocmd FileType go nmap <Leader>d <Plug>(go-doc-vertical)
+autocmd FileType go nmap <Leader>b <Plug>(go-build)
+
+map <C-j> :lnext<CR>
+map <C-k> :lprevious<CR>
+noremap <leader>a :cclose<CR>
 
 
 " docker
@@ -106,13 +113,17 @@ map <C-n> :NERDTreeToggle<CR>
 
 " Syntastic
 Plugin 'scrooloose/syntastic'
+let g:syntastic_aggregate_errors=1
+let g:syntastic_always_populate_loc_list=1
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_c_check_header = 1
 let g:syntastic_javascript_checkers = []
-let g:syntastic_go_checkers = ['go', 'golint', 'go vet', 'goimports']
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = '--ignore=E111 --max-line-length 100'
+
+let g:syntastic_go_checkers = ['go', 'golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 " Ctrl - P
 Plugin 'kien/ctrlp.vim'

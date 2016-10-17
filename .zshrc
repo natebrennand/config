@@ -20,6 +20,8 @@ else
 fi
 export VISUAL=$EDITOR
 
+export GO15VENDOREXPERIMENT=1
+
 # Go path
 GOPATH=~/go
 export GOPATH
@@ -35,7 +37,10 @@ PATH=$PATH:/usr/local/sbin
 PATH=$PATH:/usr/local/heroku/bin         # Added by the Heroku Toolbelt
 PATH=$PATH:$GOPATH                       # Add go
 PATH=$GOPATH/bin:$PATH                   # Add go executables
-PATH=/usr/texbin:$PATH                   # Add tex
+PATH=$PATH:/usr/texbin                   # Add tex
+PATH=$PATH:/usr/local/go/bin
+PATH=$PATH:~/go/src/github.com/brendangregg/FlameGraph
+
 export PATH
 
 # Docker (will find the IP if it is running)
