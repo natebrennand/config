@@ -278,7 +278,7 @@ map <F5> :setlocal spell! spelllang=en_us<CR>
 let mapleader = ","
 
 " adding special characters
-set listchars=eol:¬,tab:>-,trail:█,extends:>,precedes:-
+set listchars=tab:>-,trail:█,extends:>,precedes:-
 set list
 
 " making vim run fast
