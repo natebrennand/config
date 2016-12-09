@@ -84,7 +84,7 @@ alias subl='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
 # source ~/.bash_profile
 # source ~/.bashrc
 source ~/.clever_bash
-. ~/nvm/nvm.sh
+source ~/.nvm/nvm.sh
 source /usr/local/bin/virtualenvwrapper.sh
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
