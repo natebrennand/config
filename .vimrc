@@ -7,11 +7,11 @@ if !has('nvim')
     set ttyfast " u got a fast terminal
 
     " colors
-    if $TERM =~ '256color'
-        set t_Co=256
-    elseif $TERM =~ '^xterm$'
-        set t_Co=256
-    endif
+" "    if $TERM =~ '256color'
+" "        set t_Co=256
+" "    elseif $TERM =~ '^xterm$'
+" "        set t_Co=256
+" "    endif
 endif
 
 if has('nvim')
@@ -23,13 +23,11 @@ endif
 " Vundle setup
 filetype off
 
-let g:python_host_prog='/usr/bin/python2'
+let g:python_host_prog='/usr/local/bin/python2'
+let g:python3_host_prog='/usr/local/bin/python3'
 
 let &rtp = &rtp . ',' . s:editor_root . '/bundle/Vundle.vim'
-
-" call vundle#rc(s:editor_root . '/bundle')
 call vundle#begin(s:editor_root . '/bundle')
-
 
 
 Plugin 'gmarik/Vundle.vim'
@@ -37,11 +35,15 @@ Plugin 'gmarik/Vundle.vim'
 " Plugins
 " git status reminder
 Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
+autocmd QuickFixCmdPost *grep* cwindow
 
 " best thing since sliced bread
 Plugin 'Valloric/YouCompleteMe'
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-
+let g:ycm_filetype_specific_completion_to_disable = {
+      \ 'fs': 1
+      \}
 
 " various highlighters
 Plugin 'vim-coffee-script'
@@ -51,11 +53,29 @@ Plugin 'digitaltoad/vim-jade'
 
 " Typescript
 Plugin 'leafgarland/typescript-vim'
-Plugin 'Quramy/tsuquyomi'
-" dependency of 'Quramy/tsuquyomi'
-Plugin 'Shougo/vimproc.vim'
+" Plugin 'Quramy/tsuquyomi'
+" Plugin 'Shougo/vimproc.vim' " dependency of 'Quramy/tsuquyomi'
+let g:typescript_compiler_binary = 'tsc'
+let g:typescript_compiler_options = ''
 let g:tsuquyomi_disable_quickfix = 1
-autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+
+" f sharp
+Plugin 'fsharp/vim-fsharp'
+let g:fsharp_helptext_comments = 1
+let g:fsharpbinding_debug = 1
+Plugin 'OmniSharp/omnisharp-vim'
+
+" let g:tsuquyomi_disable_quickfix = 1
+" autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+
+let s:lcd = fnameescape(getcwd())
+silent! exec "lcd" expand('%:p:h')
+let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
+exec "lcd" s:lcd
+let b:syntastic_javascript_eslint_exec = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint'
+let g:syntastic_typescript_tslint_exe = '$(npm bin)/tslint'
+let g:syntastic_typescript_tsc_fname = ''
 
 " lotsa colorschemes
 Plugin 'flazz/vim-colorschemes'
@@ -90,6 +110,10 @@ Plugin 'derekwyatt/vim-scala'
 " thrift...
 Bundle 'solarnz/thrift.vim'
 
+" Reason ML
+Bundle 'reasonml-editor/vim-reason'
+let g:vimreason_extra_args_expr_reason = '"--print-width 90"'
+
 " LISP
 " rainbow parens
 Plugin 'oblitum/rainbow'
@@ -123,7 +147,7 @@ Plugin 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
 
 " Syntastic
-Plugin 'scrooloose/syntastic'
+Plugin 'vim-syntastic/syntastic'
 let g:syntastic_aggregate_errors = 1
 
 let g:syntastic_always_populate_loc_list = 1
@@ -134,28 +158,25 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_c_check_header = 1
-let g:syntastic_javascript_checkers = []
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = '--ignore=E111 --max-line-length 100'
-let g:syntastic_typescript_checkers=["eslint"]
+let g:syntastic_typescript_checkers=['tsc', 'tslint']
 let g:syntastic_javascript_checkers = ['eslint']
 
-" let g:syntastic_go_checkers = ['go', 'golint', 'go vet', 'goimports']
-let g:syntastic_go_checkers = ['go', 'golint', 'govet', 'errcheck']
-" let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-
-
-let g:syntastic_go_checkers = ['go', 'golint', 'govet', 'errcheck']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+let g:syntastic_go_checkers = ['go', 'gofmt', 'golint', 'govet']
+let g:syntastic_mode_map = { 'mode': 'active' }
 
 " Ctrl - P
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:40,results:40'
+let g:ctrlp_max_files = 0
+let g:ctrlp_max_depth = 100
+
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log,*.db,*.pdf
-set wildignore+=*.cmo,*.cmi                 " ocaml"
+set wildignore+=*.cmo,*.cmi                 " ocaml
 set wildignore+=*.pyc                       " Python
 set wildignore+=*.min.js,*/jsmin/*          " JS
 set wildignore+=*.fls,*.aux,*.fdb_latexmk   " latex
@@ -184,7 +205,6 @@ set showmatch      " Highlights matching brackets in programming languages
 " tabs
 set expandtab
 set tabstop=4       " Spaces instead of tabs
-set shiftwidth=4
 set smarttab        " Improves tabbing
 set shiftwidth=4    " Assists code formatting
 
@@ -227,6 +247,8 @@ au BufRead,BufNewFile *.less set filetype=less
 au BufRead,BufNewFile *.go set filetype=go
 " ocaml
 au BufRead,BufNewFile *.ml,*.mli set filetype=ocaml
+" reason
+au BufRead,BufNewFile *.re set filetype=reason
 
 " use ruby syntax in Vagrantfiles
 augroup vagrant
@@ -235,16 +257,27 @@ augroup vagrant
 augroup END
 
 " ocaml plugin stuff
-if system("which opam")
-    let g:opamshare = substitute(system('opam config var share'),'\n$','','')
-    execute "set rtp+=" . g:opamshare . "/merlin/vim"
-    execute "set rtp+=" . g:opamshare . "/merlin/vimbufsync"
-    set rtp+=/usr/local/share/ocamlmerlin/vim
+" if system("which opam")
+"     let g:opamshare = substitute(system('opam config var share'),'\n$','','')
+"     execute "set rtp+=" . g:opamshare . "/merlin/vim"
+"     execute "set rtp+=" . g:opamshare . "/merlin/vimbufsync"
+"     set rtp+=/usr/local/share/ocamlmerlin/vim
+" endif
+
+if executable('ocamlmerlin')
+  let g:opamshare = substitute(system('opam config var share'),'\n$','','')
+  execute "set rtp+=" . g:opamshare . "/merlin/vim"
+  execute "set rtp+=" . g:opamshare . "/merlin/vimbufsync"
+  let g:syntastic_ocaml_checkers=['merlin']
+endif
+if executable('refmt')
+  let g:opamshare = substitute(system('opam config var share'),'\n$','','')
+  execute "set rtp+=" . g:opamshare . "/reason/editorSupport/VimReason"
+  let g:syntastic_reason_checkers=['merlin']
 endif
 
 " webpack nonsense
 set backupcopy=yes
-
 
 " use filetype specific vim settings, settings located in ~/.vim/after/ftplugin/
 filetype indent plugin on
