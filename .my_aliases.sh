@@ -8,7 +8,6 @@ alias zshconfig="vim ~/.zshrc"
 alias l='ls -1h'
 alias ll='ls -alF'
 alias less="/usr/share/vim/vim73/macros/less.sh" # coloring while using less
-alias mtr="sudo mtr"                             # ping on steroids
 alias server='python -m SimpleHTTPServer'
 alias latex='/usr/texbin/pdflatex'
 alias nosetests='nosetests -v'

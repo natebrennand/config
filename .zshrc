@@ -39,9 +39,16 @@ PATH=$PATH:$GOPATH                       # Add go
 PATH=$GOPATH/bin:$PATH                   # Add go executables
 PATH=$PATH:/usr/texbin                   # Add tex
 PATH=$PATH:/usr/local/go/bin
+PATH=$PATH:/Library/Frameworks/Mono.framework/Commands/
 PATH=$PATH:~/go/src/github.com/brendangregg/FlameGraph
+PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.6/bin/
+PATH=$PATH:/usr/local/texlive/2015/bin/x86_64-darwin/
+
 
 export PATH
+
+bindkey -v
+bindkey '^R' history-incremental-search-backward
 
 # Docker (will find the IP if it is running)
 # export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
