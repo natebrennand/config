@@ -1,3 +1,4 @@
+alias code='cd ${CODE_HOME}'
 
 # vim
 alias vi='vim'
