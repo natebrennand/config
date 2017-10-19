@@ -43,7 +43,7 @@ PATH=$PATH:/Library/Frameworks/Mono.framework/Commands/
 PATH=$PATH:~/go/src/github.com/brendangregg/FlameGraph
 PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.6/bin/
 PATH=$PATH:/usr/local/texlive/2015/bin/x86_64-darwin/
-
+PATH=/usr/local/opt/python/libexec/bin:$PATH # override the system python
 
 export PATH
 
@@ -95,3 +95,11 @@ source ~/.nvm/nvm.sh
 source /usr/local/bin/virtualenvwrapper.sh
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
+
+HISTSIZE=5000           # How many lines of history to keep in memory
+HISTFILE=~/.zsh_history # Where to save history to disk
+SAVEHIST=5000           # Number of history entries to save to disk
+HISTDUP=erase           # Erase duplicates in the history file
+setopt appendhistory    # Append history to the history file (no overwriting)
+setopt sharehistory     # Share history across terminals
+setopt incappendhistory # Immediately append to the history file, not just when a term is killed
