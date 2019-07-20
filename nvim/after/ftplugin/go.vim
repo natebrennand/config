@@ -16,3 +16,4 @@ nmap <Leader>e <Plug>(go-rename)
 nmap <leader>t <Plug>(go-test)
 nmap <Leader>d <Plug>(go-doc-vertical)
 
+ab iferr if err != nil {<CR>}

@@ -23,7 +23,8 @@ endif
 " Vundle setup
 filetype off
 
-let g:python_host_prog='/usr/local/bin/python2'
+" let g:python_host_prog='/usr/local/bin/python2'
+let g:python2_host_prog='/usr/local/bin/python2'
 let g:python3_host_prog='/usr/local/bin/python3'
 
 let &rtp = &rtp . ',' . s:editor_root . '/bundle/Vundle.vim'
@@ -39,31 +40,32 @@ Plugin 'tpope/vim-fugitive'
 autocmd QuickFixCmdPost *grep* cwindow
 
 " best thing since sliced bread
-Plugin 'Valloric/YouCompleteMe'
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_filetype_specific_completion_to_disable = {
-      \ 'fs': 1
-      \}
-
+" Plugin 'Valloric/YouCompleteMe'
+" let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+" let g:ycm_filetype_specific_completion_to_disable = {
+"       \ 'fs': 1
+"       \}
+" 
 " various highlighters
 Plugin 'vim-coffee-script'
 Plugin 'vim-less'
 Plugin 'mutewinter/nginx.vim'
 Plugin 'digitaltoad/vim-jade'
+Plugin 'rust-lang/rust.vim'
 
 " Typescript
 Plugin 'leafgarland/typescript-vim'
-" Plugin 'Quramy/tsuquyomi'
-" Plugin 'Shougo/vimproc.vim' " dependency of 'Quramy/tsuquyomi'
+Plugin 'Quramy/tsuquyomi'
+Plugin 'Shougo/vimproc.vim' " dependency of 'Quramy/tsuquyomi'
 let g:typescript_compiler_binary = 'tsc'
 let g:typescript_compiler_options = ''
 let g:tsuquyomi_disable_quickfix = 1
 
 " f sharp
-Plugin 'fsharp/vim-fsharp'
-let g:fsharp_helptext_comments = 1
-let g:fsharpbinding_debug = 1
-Plugin 'OmniSharp/omnisharp-vim'
+" Plugin 'fsharp/vim-fsharp'
+" let g:fsharp_helptext_comments = 1
+" let g:fsharpbinding_debug = 1
+" Plugin 'OmniSharp/omnisharp-vim'
 
 " let g:tsuquyomi_disable_quickfix = 1
 " autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
@@ -82,7 +84,18 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'tangphillip/SunburstVIM'
 
 " go stuff
+" Plugin 'mdempsky/gocode', {'rtp': 'nvim/'}
 Plugin 'fatih/vim-go'
+let g:go_def_mode = "gopls"
+Plugin 'shougo/deoplete.nvim',
+Plugin 'zchee/deoplete-go'
+let g:deoplete#enable_at_startup = 1
+
+autocmd VimEnter * call deoplete#custom#source('_',  'disabled_syntaxes', ['Comment', 'String'])
+" autocmd VimEnter * call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
+
+
+
 let g:go_hightlight_functions = 1
 let g:go_hightlight_methods = 1
 let g:go_fmt_command = "goimports"
@@ -146,6 +159,20 @@ set laststatus=2
 Plugin 'scrooloose/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
 
+" Ale - Was not ready when I tried it on 10/18/2017
+" Plugin 'w0rp/ale'
+" let g:ale_linters = {
+" \   'go': ['go build', 'golint', 'go vet'],
+" \}
+" let g:ale_fixers = {
+" \   'javascript': ['eslint'],
+" \}
+" " Enable completion where available.
+" let g:ale_completion_enabled = 1
+" let g:ale_set_loclist = 0
+" let g:ale_set_quickfix = 1
+
+
 " Syntastic
 Plugin 'vim-syntastic/syntastic'
 let g:syntastic_aggregate_errors = 1
@@ -162,18 +189,28 @@ let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = '--ignore=E111 --max-line-length 100'
 let g:syntastic_typescript_checkers=['tsc', 'tslint']
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_html_checkers = []
+
 
 let g:syntastic_go_checkers = ['go', 'gofmt', 'golint', 'govet']
 let g:syntastic_mode_map = { 'mode': 'active' }
 
+" FZF
+Plugin 'junegunn/fzf.vim'
+set rtp+=/usr/local/opt/fzf
+set rtp+=~/.fzf
+map <C-p> :Files<CR>
+map <C-g> :Ag<CR>
+
+
 " Ctrl - P
-Plugin 'ctrlpvim/ctrlp.vim'
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:40,results:40'
-let g:ctrlp_max_files = 0
-let g:ctrlp_max_depth = 100
+" Plugin 'ctrlpvim/ctrlp.vim'
+" let g:ctrlp_map = '<c-p>'
+" let g:ctrlp_cmd = 'CtrlP'
+" let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:40,results:40'
+" let g:ctrlp_max_files = 0
+" let g:ctrlp_max_depth = 100
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log,*.db,*.pdf
 set wildignore+=*.cmo,*.cmi                 " ocaml
@@ -238,7 +275,7 @@ colorscheme monokain
 au BufRead,BufNewFile *.txt setfiletype=text
 " markdown syntax
 au BufRead,BufNewFile *.md set filetype=markdown
-autocmd BufRead,BufNewFile *.md setlocal spell
+" autocmd BufRead,BufNewFile *.md setlocal spell
 " coffee syntax
 au BufRead,BufNewFile *.coffee set filetype=coffee
 " less syntax
@@ -284,6 +321,10 @@ filetype indent plugin on
 
 " show cursor position
 set cursorline
+autocmd InsertEnter * highlight CursorLine guibg=red guifg=fg
+autocmd InsertLeave * highlight CursorLine guibg=red guifg=fg
+
+
 
 " window stuff
 set winwidth=80     " default to a width of 80 columns
