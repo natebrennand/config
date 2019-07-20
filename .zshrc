@@ -37,7 +37,10 @@ PATH=$PATH:/usr/local/sbin
 PATH=$PATH:/usr/local/heroku/bin         # Added by the Heroku Toolbelt
 PATH=$PATH:$GOPATH                       # Add go
 PATH=$GOPATH/bin:$PATH                   # Add go executables
-PATH=$PATH:/usr/texbin                   # Add tex
+PATH=$HOME/.cargo/bin:$PATH # add cargo for rust
+# Add potential tex paths
+PATH=$PATH:/usr/texbin
+PATH=$PATH:/Library/TeX/texbin/
 PATH=$PATH:/usr/local/go/bin
 PATH=$PATH:/Library/Frameworks/Mono.framework/Commands/
 PATH=$PATH:~/go/src/github.com/brendangregg/FlameGraph
@@ -103,3 +106,40 @@ HISTDUP=erase           # Erase duplicates in the history file
 setopt appendhistory    # Append history to the history file (no overwriting)
 setopt sharehistory     # Share history across terminals
 setopt incappendhistory # Immediately append to the history file, not just when a term is killed
+
+# fzf via Homebrew
+if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
+  source /usr/local/opt/fzf/shell/key-bindings.zsh
+  source /usr/local/opt/fzf/shell/completion.zsh
+fi
+
+# fzf + ag configuration
+if _has fzf && _has ag; then
+  export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_DEFAULT_OPTS='
+  --color fg:242,bg:236,hl:65,fg+:15,bg+:239,hl+:108
+  --color info:108,prompt:109,spinner:108,pointer:168,marker:168
+  '
+fi
+export PATH="/usr/local/opt/icu4c/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+
+function s3copytodev () {
+    prodpath=$1
+
+    bucket=$(echo $prodpath | cut -d/ -f 3)
+    key=${prodpath#"s3://$bucket/"}
+
+    if [[ $bucket =~ '^.*\-dev$' ]]
+    then
+        echo "cannot copy from *-dev bucket"
+        return
+    fi
+
+    newpath="s3://$bucket-dev/$key"
+    aws s3 cp --sse AES256 $prodpath $newpath >/dev/null
+
+    echo $newpath
+}
