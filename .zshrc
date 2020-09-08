@@ -50,6 +50,8 @@ PATH=/usr/local/opt/python/libexec/bin:$PATH # override the system python
 
 export PATH
 
+eval "$(rbenv init -)"
+
 bindkey -v
 bindkey '^R' history-incremental-search-backward
 
@@ -93,9 +95,6 @@ alias subl='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
 # work stuff
 # source ~/.bash_profile
 # source ~/.bashrc
-source ~/.clever_bash
-source ~/.nvm/nvm.sh
-source /usr/local/bin/virtualenvwrapper.sh
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 
@@ -112,6 +111,10 @@ if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
   source /usr/local/opt/fzf/shell/key-bindings.zsh
   source /usr/local/opt/fzf/shell/completion.zsh
 fi
+
+_has() {
+  type "$1" &> /dev/null
+}
 
 # fzf + ag configuration
 if _has fzf && _has ag; then
@@ -143,3 +146,5 @@ function s3copytodev () {
 
     echo $newpath
 }
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

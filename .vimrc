@@ -1,17 +1,11 @@
 
 " Nate Brennand
 
-syntax on           "Enables syntax highlighting for programming languages
+" Enables syntax highlighting for programming languages
+syntax on
 if !has('nvim')
     set nocompatible
     set ttyfast " u got a fast terminal
-
-    " colors
-" "    if $TERM =~ '256color'
-" "        set t_Co=256
-" "    elseif $TERM =~ '^xterm$'
-" "        set t_Co=256
-" "    endif
 endif
 
 if has('nvim')
@@ -23,7 +17,6 @@ endif
 " Vundle setup
 filetype off
 
-" let g:python_host_prog='/usr/local/bin/python2'
 let g:python2_host_prog='/usr/local/bin/python2'
 let g:python3_host_prog='/usr/local/bin/python3'
 
@@ -39,13 +32,6 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 autocmd QuickFixCmdPost *grep* cwindow
 
-" best thing since sliced bread
-" Plugin 'Valloric/YouCompleteMe'
-" let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-" let g:ycm_filetype_specific_completion_to_disable = {
-"       \ 'fs': 1
-"       \}
-" 
 " various highlighters
 Plugin 'vim-coffee-script'
 Plugin 'vim-less'
@@ -60,15 +46,6 @@ Plugin 'Shougo/vimproc.vim' " dependency of 'Quramy/tsuquyomi'
 let g:typescript_compiler_binary = 'tsc'
 let g:typescript_compiler_options = ''
 let g:tsuquyomi_disable_quickfix = 1
-
-" f sharp
-" Plugin 'fsharp/vim-fsharp'
-" let g:fsharp_helptext_comments = 1
-" let g:fsharpbinding_debug = 1
-" Plugin 'OmniSharp/omnisharp-vim'
-
-" let g:tsuquyomi_disable_quickfix = 1
-" autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
 
 let s:lcd = fnameescape(getcwd())
 silent! exec "lcd" expand('%:p:h')
@@ -87,13 +64,9 @@ Plugin 'tangphillip/SunburstVIM'
 " Plugin 'mdempsky/gocode', {'rtp': 'nvim/'}
 Plugin 'fatih/vim-go'
 let g:go_def_mode = "gopls"
-Plugin 'shougo/deoplete.nvim',
-Plugin 'zchee/deoplete-go'
-let g:deoplete#enable_at_startup = 1
 
-autocmd VimEnter * call deoplete#custom#source('_',  'disabled_syntaxes', ['Comment', 'String'])
-" autocmd VimEnter * call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
-
+" autcompletion via language servers
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 
 
 let g:go_hightlight_functions = 1
@@ -235,6 +208,7 @@ set showcmd             " Shows incomplete commands
 
 " appearance
 set relativenumber " Enables relative line numbering
+set number         " Enables line numbering
 set ruler          " Shows cursor position in bottom bar
 set scrolloff=4    " leaves 4 lines between top/bottom and cursor
 set showmatch      " Highlights matching brackets in programming languages
@@ -352,7 +326,7 @@ map <F5> :setlocal spell! spelllang=en_us<CR>
 let mapleader = ","
 
 " adding special characters
-set listchars=tab:>-,trail:█,extends:>,precedes:-
+" set listchars=tab:>-,trail:█,extends:>,precedes:-
 set list
 
 " making vim run fast
