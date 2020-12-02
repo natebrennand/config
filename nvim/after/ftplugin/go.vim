@@ -5,8 +5,9 @@
 set colorcolumn=100
 
 " tab stuff
-setlocal noexpandtab      " expands tabs to 4 spaces
+setlocal expandtab      " expands tabs to 4 spaces
 setlocal autoindent
+set shiftwidth=4
 
 
 let g:go_fmt_command = "goimports"
@@ -15,5 +16,3 @@ let g:go_fmt_command = "goimports"
 nmap <Leader>e <Plug>(go-rename)
 nmap <leader>t <Plug>(go-test)
 nmap <Leader>d <Plug>(go-doc-vertical)
-
-ab iferr if err != nil {<CR>}

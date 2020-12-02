@@ -1,5 +1,3 @@
-alias code='cd ${CODE_HOME}'
-
 # vim
 alias vi='vim'
 alias vim='vim -O'
@@ -8,7 +6,6 @@ alias vim='vim -O'
 alias zshconfig="vim ~/.zshrc"
 alias l='ls -1h'
 alias ll='ls -alF'
-alias less="/usr/share/vim/vim73/macros/less.sh" # coloring while using less
 alias server='python -m SimpleHTTPServer'
 alias latex='/usr/texbin/pdflatex'
 alias nosetests='nosetests -v'
