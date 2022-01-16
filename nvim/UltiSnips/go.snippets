@@ -1,0 +1,42 @@
+
+snippet heap "heap implementation" ba
+// An $1 is a min-heap of $2's.
+type $1[] $2
+
+// Len returns the present size of the heap.
+func (h $1) Len() int           { return len(h) }
+// Less is used to order items in the heap.
+func (h $1) Less(i, j int) bool {
+	return h[i]$3 < h[j]$3
+}
+// Swap is leveraged by the heap.* functions to move values throughout the heap's
+// internal data structure.
+func (h $1) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
+
+// Push adds element x to the heap.
+// This is part of implementing heap.Interface
+func (h *$1) Push(x interface{}) {
+	// Push and Pop use pointer receivers because they modify the slice's length,
+	// not just its contents.
+	*h = append(*h, x.($2))
+}
+
+// Pop returns the first value based on the heap's ordering.
+// This is part of implementing heap.Interface
+func (h *$1) Pop() interface{} {
+	old := *h
+	n := len(old)
+	x := old[n-1]
+	*h = old[0 : n-1]
+	return x
+}
+
+// Peek returns the first value and a boolean indicating if it exists.
+func (h $1) Peek() (val $2, ok bool) {
+	if h.Len() == 0 {
+		return // use zero value for named return values
+	}
+	return h[0], true
+}
+$0
+endsnippet

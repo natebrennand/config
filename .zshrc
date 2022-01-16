@@ -1,7 +1,8 @@
 #Path to your oh-my-zsh configuration.
 # ZSH=$HOME/.oh-my-zsh
 
-source ~/.zprezto/init.zsh
+source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+
 
 # aliases
 source ~/.my_aliases.sh
@@ -27,7 +28,7 @@ GOPATH=~/go
 export GOPATH
 
 # PATH Variable
-PATH=/bin
+PATH=/bin:$PATH
 PATH=/sbin:$PATH
 PATH=/usr/sbin:$PATH
 PATH=/usr/bin:$PATH
@@ -49,8 +50,6 @@ PATH=$PATH:/usr/local/texlive/2015/bin/x86_64-darwin/
 PATH=/usr/local/opt/python/libexec/bin:$PATH # override the system python
 
 export PATH
-
-eval "$(rbenv init -)"
 
 bindkey -v
 bindkey '^R' history-incremental-search-backward
@@ -106,7 +105,7 @@ setopt appendhistory    # Append history to the history file (no overwriting)
 setopt sharehistory     # Share history across terminals
 setopt incappendhistory # Immediately append to the history file, not just when a term is killed
 
-# fzf via Homebrew
+# fzf via Homeerew
 if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
   source /usr/local/opt/fzf/shell/key-bindings.zsh
   source /usr/local/opt/fzf/shell/completion.zsh
@@ -148,5 +147,3 @@ function s3copytodev () {
 }
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-source ~/.striperc
