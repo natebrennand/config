@@ -2,7 +2,8 @@
 " https://github.com/hrsh7th/nvim-cmp/blob/bce1b2d780c5ec0ff3d919cf83a5325300222801/README.md
 
 " sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.config/}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-call plug#begin("~/.config/nvim/plugged")
+
+call plug#begin()
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -11,20 +12,21 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 
-Plug 'SirVer/ultisnips'
-Plug 'quangnguyen30192/cmp-nvim-ultisnips'
-
-
 " rainbow parens
 Plug 'frazrepo/vim-rainbow'
 " Autoclosing parens
 Plug 'Raimondi/delimitMate'
 " FZF
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 Plug 'mfussenegger/nvim-lint'
+
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
 " Airline
 Plug 'bling/vim-airline'
@@ -42,13 +44,6 @@ lua require('setup')
 
 " reloads the neovim config
 command ReloadConfig :source $MYVIMRC
-
-autocmd BufWritePre *.go lua vim.lsp.buf.formatting()
-" autocmd BufWritePre *.go lua goimports(500)
-
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 set completeopt=menu,menuone,noselect
 
@@ -90,20 +85,19 @@ set wildignore+=*.fls,*.aux,*.fdb_latexmk   " latex
 set wildignore+=*.class,*.jar,*.sbt         " Java / Scala
 set wildignore+=*.o                         " C
 
-
 " always show signcolumns
 set signcolumn=yes
-
 
 " folding
 set foldnestmax=5       " deepest fold in 10 levels
 set nofoldenable        " don't fold by default
 set foldlevel=1
 set foldmethod=manual   " Lets you hide sections of code
+
 " folding
 set foldmethod=indent " fold based off of indentation
 " toggle folds using the space bar
-nnoremap <Space> za
+" nnoremap <Space> za
 
 set showcmd             " Shows incomplete commands
 
@@ -119,10 +113,7 @@ set scrolloff=4    " leaves 4 lines between top/bottom and cursor
 set showmatch      " Highlights matching brackets in programming languages
 
 " tabs
-set expandtab
-set tabstop=4       " Spaces instead of tabs
-set smarttab        " Improves tabbing
-set shiftwidth=4    " Assists code formatting
+set smarttab " Improves tabbing
 
 " searching
 set hlsearch    " highlight search matches

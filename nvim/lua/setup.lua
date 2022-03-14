@@ -3,11 +3,11 @@
 local cmp = require'cmp'
 
 cmp.setup({
-  snippet = {
-    expand = function(args)
-      vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-    end,
-  },
+  -- snippet = {
+  --   expand = function(args)
+  --     vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+  --   end,
+  -- },
   mapping = {
     ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
@@ -52,7 +52,7 @@ local lspconfig = require('lspconfig')
 lspconfig['gopls'].setup {
   capabilities = capabilities,
   settings = {
-    -- lintTool = "golint",
+    lintTool = "golint",
     lintTool = "golangci-lint",
     lintOnSave = true,
     formatTool = "goimports",
