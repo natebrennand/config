@@ -20,6 +20,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+Plug 'hashivim/vim-terraform'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 

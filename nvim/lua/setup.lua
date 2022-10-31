@@ -101,7 +101,7 @@ function goimports(timeout_ms)
   end
 end
 
-local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr or 0, ...) end
 local opts = { noremap=true, silent=true }
 
 buf_set_keymap('n', 'gD',        '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
