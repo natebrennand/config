@@ -16,6 +16,7 @@ ZSH_THEME="robbyrussell"
 if hash nvim 2>/dev/null;
 then
     export EDITOR=nvim
+    export GT_EDITOR=nvim
 else
     export EDITOR=vim
 fi
@@ -35,19 +36,11 @@ PATH=/usr/bin:$PATH
 PATH=/usr/local/bin:$PATH
 PATH=$PATH:~/.vim
 PATH=$PATH:/usr/local/sbin
-PATH=$PATH:/usr/local/heroku/bin         # Added by the Heroku Toolbelt
 PATH=$PATH:$GOPATH                       # Add go
 PATH=$GOPATH/bin:$PATH                   # Add go executables
 PATH=$HOME/.cargo/bin:$PATH # add cargo for rust
-# Add potential tex paths
-PATH=$PATH:/usr/texbin
-PATH=$PATH:/Library/TeX/texbin/
-PATH=$PATH:/usr/local/go/bin
-PATH=$PATH:/Library/Frameworks/Mono.framework/Commands/
-PATH=$PATH:~/go/src/github.com/brendangregg/FlameGraph
-PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.6/bin/
-PATH=$PATH:/usr/local/texlive/2015/bin/x86_64-darwin/
-PATH=/usr/local/opt/python/libexec/bin:$PATH # override the system python
+PATH=/opt/homebrew/bin:$PATH
+PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 
 export PATH
 
@@ -156,3 +149,12 @@ source ~/.metronomerc
 
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+# jenv
+
+export CONFLUENT_HOME="$HOME/.metronome/confluent-platform"
+export PATH="$PATH:$CONFLUENT_HOME/bin"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

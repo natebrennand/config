@@ -15,7 +15,7 @@ alias glr='git pull --rebase'
 alias gp='git push'
 
 alias gco='git checkout'
-alias gcm='git checkout master'
+alias gcm='git checkout main'
 
 alias gr='git reset'
 alias grh='git reset HEAD'

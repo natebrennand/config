@@ -1,105 +1,188 @@
 
--- Setup nvim-cmp.
-local cmp = require'cmp'
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
-cmp.setup({
-  -- snippet = {
-  --   expand = function(args)
-  --     vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-  --   end,
-  -- },
-  mapping = {
-    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-    -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-    ['<C-y>'] = cmp.config.disable,
-    ['<C-e>'] = cmp.mapping({
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
-    }),
-    -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+
+vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
+vim.g.maplocalleader = "\\" -- Same for `maplocalleader`
+
+
+require("lazy").setup({
+  -- git status next to line
+  'airblade/vim-gitgutter',
+
+  -- git commands
+  'tpope/vim-fugitive',
+
+  -- syntax highlighting & colorschemes
+  'flazz/vim-colorschemes',
+  'tangphillip/SunburstVIM',
+  {
+    'tanvirtin/monokai.nvim',
+    config = function()
+      require('monokai').setup { palette = require('monokai') }
+    end,
   },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate"
+  },
+
+  {
+    "hrsh7th/nvim-cmp",
+    -- load cmp on InsertEnter
+    event = "InsertEnter",
+    -- these dependencies will only be loaded when cmp loads
+    -- dependencies are always lazy-loaded unless specified otherwise
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+    },
+    config = function()
+      -- ...
+    end,
+  },
+  'mfussenegger/nvim-lint',
+
+  'Raimondi/delimitMate',
+
+  -- FZF setup
+  {
+    "ibhagwan/fzf-lua",
+    -- optional for icon support
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      -- calling `setup` is optional for customization
+      require("fzf-lua").setup({ 'fzf-vim' })
+    end
+  },
+
+  -- language specific plugins
+  'hashivim/vim-terraform',
+  'jparise/vim-graphql',
+
+
+  -- typescript
+  {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {},
+  },
+
+  -- golang
+  {
+    "ray-x/go.nvim",
+    dependencies = {  -- optional packages
+      "ray-x/guihua.lua",
+      "neovim/nvim-lspconfig",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("go").setup()
+    end,
+    event = {"CmdlineEnter"},
+    ft = {"go", 'gomod'},
+    -- if you need to install/update all binaries
+    build = ':lua require("go.install").update_all_sync()'
+  },
+})
+
+require("typescript-tools")
+
+require('go').setup()
+
+local format_sync_grp = vim.api.nvim_create_augroup("goimports", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = function()
+   require('go.format').goimports()
+  end,
+  group = format_sync_grp,
+})
+
+local lspconfig = require('lspconfig')
+
+local cfg = require('go.lsp').config() -- config() return the go.nvim gopls setup
+lspconfig.gopls.setup(cfg)
+
+
+require'nvim-treesitter.configs'.setup({
+  -- A list of parser names, or "all" (the five listed parsers should always be installed)
+  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "typescript" },
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- Automatically install missing parsers when entering buffer
+  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+  auto_install = true,
+
+  highlight = {
+    enable = true,
+  }
+})
+
+
+-- lspconfig.gopls.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   single_file_support = true,
+--   cmd = {"gopls"},
+--   filetypes = { "go", "gomod", "gowork", "gotmpl" },
+--   root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
+--   settings = {
+--     gopls = {
+--       completeUnimported = true,
+--       usePlaceholders = true,
+--       analyses = {
+--         unusedparams = true,
+--       },
+--     },
+--   },
+-- }
+
+
+
+local cmp = require('cmp')
+cmp.setup({
+  mapping = {
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<C-n>'] = cmp.mapping.select_next_item(),
+  },
+
+  window =  {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'ultisnips' },
   }, {
     { name = 'buffer' },
   })
 })
 
--- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline('/', {
-  sources = {
-    { name = 'buffer' }
-  }
-})
 
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(':', {
-  sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
-    { name = 'cmdline' }
-  })
-})
+-- require'lspconfig'.gopls.setup{}
+-- 
+-- local lspconfig = require('lspconfig')
+-- lspconfig.rust_analyzer.setup {
+--   -- Server-specific settings. See `:help lspconfig-setup`
+--   settings = {
+--     ['rust-analyzer'] = {},
+--   },
+-- }
 
--- Setup lspconfig.
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local lspconfig = require('lspconfig')
-
-lspconfig['gopls'].setup {
-  capabilities = capabilities,
-  settings = {
-    lintTool = "golint",
-    lintTool = "golangci-lint",
-    lintOnSave = true,
-    formatTool = "goimports",
-    gopls = {
-      experimentalPostfixCompletions = true,
-      analyses = {
-        unusedparams = true,
-        shadow = true,
-      },
-      staticcheck = true,
-    },
-  },
-}
-
--- https://www.getman.io/posts/programming-go-in-neovim/
-function goimports(timeout_ms)
-  local context = { source = { organizeImports = true } }
-  vim.validate { context = { context, "t", true } }
-
-  local params = vim.lsp.util.make_range_params()
-  params.context = context
-
-  -- See the implementation of the textDocument/codeAction callback
-  -- (lua/vim/lsp/handler.lua) for how to do this properly.
-  local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, timeout_ms)
-
-  local _, res = next(result)
-  if res == nil then return end
-
-  local actions = res.result
-  if actions == nil then return end
-  local _, action = next(actions)
-
-  -- textDocument/codeAction can return either Command[] or CodeAction[]. If it
-  -- is a CodeAction, it can have either an edit, a command or both. Edits
-  -- should be executed first.
-  if action.edit or type(action.command) == "table" then
-    if action.edit then
-      vim.lsp.util.apply_workspace_edit(action.edit)
-    end
-    if type(action.command) == "table" then
-      vim.lsp.buf.execute_command(action.command)
-    end
-  else
-    vim.lsp.buf.execute_command(action)
-  end
-end
 
 local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr or 0, ...) end
 local opts = { noremap=true, silent=true }
@@ -112,6 +195,4 @@ buf_set_keymap('n', 'gr',        '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 buf_set_keymap('n', '[d',        '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 buf_set_keymap('n', ']d',        '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-
-vim.lsp.set_log_level("debug")
 

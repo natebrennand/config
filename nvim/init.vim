@@ -1,47 +1,5 @@
 
-" https://github.com/hrsh7th/nvim-cmp/blob/bce1b2d780c5ec0ff3d919cf83a5325300222801/README.md
-
-" sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.config/}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
-call plug#begin()
-
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-
-" rainbow parens
-Plug 'frazrepo/vim-rainbow'
-" Autoclosing parens
-Plug 'Raimondi/delimitMate'
-" FZF
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-
-Plug 'hashivim/vim-terraform'
-
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
-Plug 'mfussenegger/nvim-lint'
-
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-
-" Airline
-Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-" lotsa colorschemes
-Plug 'flazz/vim-colorschemes'
-Plug 'tangphillip/SunburstVIM'
-
-call plug#end()
-
-
 lua require('setup')
-
 
 " reloads the neovim config
 command ReloadConfig :source $MYVIMRC
@@ -126,16 +84,13 @@ set smartcase   " searches w/ case if there's a capital letter
 nnoremap <C-L> :nohl<CR><C-L>
 
 set background=dark
-" colorscheme sunburst
 highlight Normal guibg=black guifg=white
-colorscheme monokain
+colorscheme monokai_pro
 
 filetype indent plugin on
 
 " show cursor position
 set cursorline
-autocmd InsertEnter * highlight CursorLine guibg=red guifg=fg
-autocmd InsertLeave * highlight CursorLine guibg=red guifg=fg
 
 " clipboard stuff
 " copying

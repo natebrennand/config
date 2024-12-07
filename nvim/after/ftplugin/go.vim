@@ -1,8 +1,6 @@
 
 " Go vim settings
 
-autocmd BufWritePre lua goimports(500)
-
 "line length stuff
 set colorcolumn=100
 
@@ -19,4 +17,9 @@ setlocal foldmethod=syntax
 nmap <Leader>e <Plug>(go-rename)
 nmap <leader>t <Plug>(go-test)
 nmap <Leader>d <Plug>(go-doc-vertical)
+
+autocmd BufWritePre lua vim.lsp.buf.formatting()
+autocmd BufWritePre lua goimports(1000)
+autocmd BufWritePre (InsertLeave?) <buffer> lua vim.lsp.buf.formatting_sync(nil,500)
+
 
