@@ -30,11 +30,7 @@ let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
 let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
 
 
-set rtp+=/usr/local/opt/fzf
 set rtp+=~/.fzf
-map <C-p> :Files<CR>
-map <C-g> :Ag<CR>
-
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.log,*.db,*.pdf
 set wildignore+=*.cmo,*.cmi                 " ocaml

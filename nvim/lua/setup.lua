@@ -62,8 +62,13 @@ require("lazy").setup({
     -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-      -- calling `setup` is optional for customization
-      require("fzf-lua").setup({ 'fzf-vim' })
+      require("fzf-lua").setup({
+        fzf_opts = {
+          ["--layout"] = "default",
+          ["--info"] = "inline",
+        },
+        -- You can customize keybindings and other settings here
+      })
     end
   },
 
@@ -184,7 +189,10 @@ cmp.setup({
 -- }
 
 
-local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr or 0, ...) end
+local function buf_set_keymap(...)
+  local bufnr = vim.api.nvim_get_current_buf()
+  vim.api.nvim_buf_set_keymap(bufnr, ...)
+end
 local opts = { noremap=true, silent=true }
 
 buf_set_keymap('n', 'gD',        '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -195,4 +203,8 @@ buf_set_keymap('n', 'gr',        '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 buf_set_keymap('n', '[d',        '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 buf_set_keymap('n', ']d',        '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+
+local set_keymap = vim.api.nvim_set_keymap
+set_keymap('n', '<C-p>', ':FzfLua files<CR>', opts)
+set_keymap('n', '<C-g>', ':FzfLua live_grep<CR>', opts)
 

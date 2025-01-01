@@ -234,11 +234,10 @@ let g:syntastic_go_checkers = ['go', 'gofmt', 'golint', 'govet']
 let g:syntastic_mode_map = { 'mode': 'active' }
 
 " FZF
-Plugin 'junegunn/fzf.vim'
+" Plugin 'junegunn/fzf.vim'
 set rtp+=/usr/local/opt/fzf
 set rtp+=~/.fzf
 map <C-p> :Files<CR>
-map <C-g> :Ag<CR>
 
 
 " Ctrl - P
