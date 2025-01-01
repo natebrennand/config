@@ -39,6 +39,7 @@ PATH=$PATH:/usr/local/sbin
 PATH=$PATH:$GOPATH                       # Add go
 PATH=$GOPATH/bin:$PATH                   # Add go executables
 PATH=$HOME/.cargo/bin:$PATH # add cargo for rust
+PATH=$(rustc --print sysroot)/bin:$PATH # add cargo for rust
 PATH=/opt/homebrew/bin:$PATH
 PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 

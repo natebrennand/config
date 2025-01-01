@@ -1,6 +1,6 @@
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
+if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -72,10 +72,12 @@ require("lazy").setup({
     end
   },
 
+
   -- language specific plugins
   'hashivim/vim-terraform',
   'jparise/vim-graphql',
 
+  'mileszs/ack.vim',
 
   -- typescript
   {
@@ -104,8 +106,6 @@ require("lazy").setup({
 
 require("typescript-tools")
 
-require('go').setup()
-
 local format_sync_grp = vim.api.nvim_create_augroup("goimports", {})
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*.go",
@@ -121,42 +121,18 @@ local cfg = require('go.lsp').config() -- config() return the go.nvim gopls setu
 lspconfig.gopls.setup(cfg)
 
 
-require'nvim-treesitter.configs'.setup({
-  -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "typescript" },
-
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "rust", "lua", "vim", "c", "javascript", "typescript", "sql", "vimdoc" },
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
-
   -- Automatically install missing parsers when entering buffer
   -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
   auto_install = true,
-
   highlight = {
     enable = true,
-  }
-})
-
-
--- lspconfig.gopls.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
---   single_file_support = true,
---   cmd = {"gopls"},
---   filetypes = { "go", "gomod", "gowork", "gotmpl" },
---   root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
---   settings = {
---     gopls = {
---       completeUnimported = true,
---       usePlaceholders = true,
---       analyses = {
---         unusedparams = true,
---       },
---     },
---   },
--- }
-
-
+    additional_vim_regex_highlighting = false,
+  },
+}
 
 local cmp = require('cmp')
 cmp.setup({
@@ -172,21 +148,38 @@ cmp.setup({
 
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-  }, {
     { name = 'buffer' },
   })
 })
 
+-- Setup rust-analyzer
+lspconfig.rust_analyzer.setup {
+  settings = {
+    ['rust-analyzer'] = {
+      diagnostics = {
+        disabled = { "dead_code" }, -- Suppress "is never used" warnings
+      },
+      cargo = {
+        allFeatures = true, -- Ensures all features are analyzed
+        allTargets = true, -- Ensure all targets (lib, bin, tests) are analyzed
+      },
+      checkOnSave = {
+        command = "clippy", -- Use Clippy for better diagnostic precision
+      },
+      procMacro = {
+        enable = true, -- Enable procedural macro support
+      },
+    }
+  },
+  handlers = {
+    ["window/logMessage"] = function(err, method, params, client_id)
+      print(params.message)
+    end,
+  },
+}
 
--- require'lspconfig'.gopls.setup{}
--- 
--- local lspconfig = require('lspconfig')
--- lspconfig.rust_analyzer.setup {
---   -- Server-specific settings. See `:help lspconfig-setup`
---   settings = {
---     ['rust-analyzer'] = {},
---   },
--- }
+ vim.o.updatetime = 100 -- Reduce update time for better responsiveness
+ vim.cmd [[autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })]]
 
 
 local function buf_set_keymap(...)
