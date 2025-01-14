@@ -115,6 +115,16 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   group = format_sync_grp,
 })
 
+-- Define a custom command :ShowDoc to display documentation
+vim.api.nvim_create_user_command(
+  'ShowDoc',
+  function()
+    vim.lsp.buf.hover()
+  end,
+  { desc = 'Show documentation for the symbol under cursor' }
+)
+
+
 local lspconfig = require('lspconfig')
 
 local cfg = require('go.lsp').config() -- config() return the go.nvim gopls setup
@@ -130,7 +140,7 @@ require'nvim-treesitter.configs'.setup {
   auto_install = true,
   highlight = {
     enable = true,
-    additional_vim_regex_highlighting = false,
+    additional_vim_regex_highlighting = true,
   },
 }
 
@@ -178,9 +188,8 @@ lspconfig.rust_analyzer.setup {
   },
 }
 
- vim.o.updatetime = 100 -- Reduce update time for better responsiveness
- vim.cmd [[autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })]]
-
+vim.o.updatetime = 100 -- Reduce update time for better responsiveness
+vim.cmd [[autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })]]
 
 local function buf_set_keymap(...)
   local bufnr = vim.api.nvim_get_current_buf()
@@ -200,4 +209,5 @@ buf_set_keymap('n', ']d',        '<cmd>lua vim.diagnostic.goto_next()<CR>', opts
 local set_keymap = vim.api.nvim_set_keymap
 set_keymap('n', '<C-p>', ':FzfLua files<CR>', opts)
 set_keymap('n', '<C-g>', ':FzfLua live_grep<CR>', opts)
+set_keymap('n', '<C-k>', ':ShowDoc<CR>', { noremap = true, silent = true, desc = 'Show Documentation' })
 
