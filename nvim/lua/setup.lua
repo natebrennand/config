@@ -35,7 +35,19 @@ require("lazy").setup({
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate"
+    build = ":TSUpdate",
+    opts = {
+      ensure_installed = { "rust", "lua", "vim", "c", "javascript", "typescript", "sql", "vimdoc" },
+      -- Install parsers synchronously (only applied to `ensure_installed`)
+      sync_install = false,
+      -- Automatically install missing parsers when entering buffer
+      -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+      auto_install = true,
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = true,
+      },
+    },
   },
 
   {
@@ -125,24 +137,11 @@ vim.api.nvim_create_user_command(
 )
 
 
-local lspconfig = require('lspconfig')
-
 local cfg = require('go.lsp').config() -- config() return the go.nvim gopls setup
-lspconfig.gopls.setup(cfg)
+vim.lsp.config('gopls', cfg)
+vim.lsp.enable('gopls')
 
 
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "rust", "lua", "vim", "c", "javascript", "typescript", "sql", "vimdoc" },
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
-  -- Automatically install missing parsers when entering buffer
-  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-  auto_install = true,
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = true,
-  },
-}
 
 local cmp = require('cmp')
 cmp.setup({
@@ -163,9 +162,13 @@ cmp.setup({
 })
 
 -- Setup rust-analyzer
-lspconfig.rust_analyzer.setup {
+vim.lsp.config('rust_analyzer', {
   settings = {
     ['rust-analyzer'] = {
+      completion = {
+        postfix = { enable = false },
+        snippets = { custom = vim.empty_dict() },
+      },
       diagnostics = {
         disabled = { "dead_code" }, -- Suppress "is never used" warnings
       },
@@ -173,7 +176,8 @@ lspconfig.rust_analyzer.setup {
         allFeatures = true, -- Ensures all features are analyzed
         allTargets = true, -- Ensure all targets (lib, bin, tests) are analyzed
       },
-      checkOnSave = {
+      checkOnSave = true,
+      check = {
         command = "clippy", -- Use Clippy for better diagnostic precision
       },
       procMacro = {
@@ -186,7 +190,28 @@ lspconfig.rust_analyzer.setup {
       print(params.message)
     end,
   },
-}
+})
+vim.lsp.enable('rust_analyzer')
+
+-- Hide inlay hints during editing, show them in normal mode
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local bufnr = args.buf
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    vim.api.nvim_create_autocmd("InsertEnter", {
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
+      end,
+    })
+    vim.api.nvim_create_autocmd("InsertLeave", {
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+      end,
+    })
+  end,
+})
 
 vim.o.updatetime = 100 -- Reduce update time for better responsiveness
 vim.cmd [[autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })]]

@@ -33,6 +33,9 @@ setup () {
 
 git submodule update --init --recursive
 
+mkdir -p ~/.config
+ln -sf $here/nvim ~/.config/nvim
+
 setup_dir .vim
 setup .vimrc
 setup .gitconfig
